@@ -1,35 +1,34 @@
 ﻿// See https://aka.ms/new-console-template for more information
-using System.Reflection;
-using Algorithms;
-using static Algorithms.Solutions;
 using static BinarySearchTree;
+using static Solutions;
 
 Console.WriteLine();
 
-BinarySearchTree BST = new BinarySearchTree();
-DP DP = new DP();
-StringSolutions StringSols = new StringSolutions();
-IntegerSolutions IntegerSols = new IntegerSolutions();
-ArraysSolutions ArraySols = new ArraysSolutions();
+BinarySearchTree bst = new BinarySearchTree();
+DP dp = new DP();
+Strings stringSolutions = new Strings();
+Integers integerSolutions = new Integers();
+ArraysLists arraySolutions = new ArraysLists();
+Miscellaneous misc = new Miscellaneous();
 
 string[] solutions = {
-    nameof(TwoSum),
-    nameof(LeftRotation),
-    nameof(PlusMinus),
-    nameof(Staircase),
-    nameof(ArrayMinMaxSum),
-    nameof(BirthdayCakeCandles),
-    nameof(GradingStudents),
-    nameof(AddTwoNumbers),
-    nameof(IsPalindrome),
-    nameof(ZigzagConversion),
-    nameof(MinimumLengthEncoding),
-    nameof(LongestPalindrome),
-    nameof(GenerateParenthesis),
-    nameof(GeneratePermutationsI),
-    nameof(GeneratePermutationsII),
-    nameof(GenerateListPermutations),
-    nameof(SearchRange),
+    nameof(Solutions.TwoSum),
+    nameof(Solutions.LeftRotation),
+    nameof(Solutions.PlusMinus),
+    nameof(Solutions.Staircase),
+    nameof(Solutions.ArrayMinMaxSum),
+    nameof(Solutions.BirthdayCakeCandles),
+    nameof(Solutions.GradingStudents),
+    nameof(Solutions.AddTwoNumbers),
+    nameof(Solutions.IsPalindrome),
+    nameof(Solutions.ZigzagConversion),
+    nameof(Solutions.MinimumLengthEncoding),
+    nameof(Solutions.LongestPalindrome),
+    nameof(Solutions.GenerateParenthesis),
+    nameof(Solutions.GeneratePermutationsI),
+    nameof(Solutions.GeneratePermutationsII),
+    nameof(Solutions.GenerateListPermutations),
+    nameof(Solutions.SearchRange),
     nameof(BinarySearchTree.InOrderTraversal),
     nameof(BinarySearchTree.PreOrderTraversal),
     nameof(BinarySearchTree.PostOrderTraversal),
@@ -40,10 +39,18 @@ string[] solutions = {
     nameof(BinarySearchTree.BinaryTreeMinimumDepthI),
     nameof(BinarySearchTree.BinaryTreeMinimumDepthII),
     nameof(BinarySearchTree.NumberOfUniqueBinarySearchTrees),
-    nameof(DP.PalindromePartioning),
-    nameof(StringSols.LongestSubstringWithNonRepeatingChars),
-    nameof(IntegerSols.ReverseInteger),
-    nameof(ArraySols.FindMedianSortedArrays),
+    nameof(dp.PalindromePartioning),
+    nameof(stringSolutions.LongestSubstringWithNonRepeatingChars),
+    nameof(integerSolutions.ReverseInteger),
+    nameof(arraySolutions.FindMedianSortedArrays),
+    nameof(ArraysLists.MoveUniquesToFront),
+    nameof(Strings.ReverseString),
+    nameof(bst.BinaryTreeMaximumDepth),
+    nameof(arraySolutions.MergeAndSortArrays),
+    nameof(dp.NumberOfWaysClimbStairs),
+    nameof(arraySolutions.ShuffleArray),
+    nameof(arraySolutions.FizzBuzz),
+    nameof(Miscellaneous.IsValidParenthesis)
 };
 
 for (int i = 0; i < solutions.Length; i++)
@@ -60,26 +67,26 @@ string output = string.Empty;
 switch (input)
 {
     case 1:
-        int[] twoSumResult = TwoSum(new int[] { 3, 2, 4 }, 5);
+        int[] twoSumResult = Solutions.TwoSum(new int[] { 3, 2, 4 }, 5);
         output = $"[{string.Join(", ", twoSumResult)}]";
         break;
     case 2:
-        List<int> leftRotationResult = LeftRotation(new List<int> { 1, 2, 3, 4, 5 }, 4);
+        List<int> leftRotationResult = Solutions.LeftRotation(new List<int> { 1, 2, 3, 4, 5 }, 4);
         output = $"[{string.Join(", ", leftRotationResult)}]";
         break;
     case 3:
-        List<string> plusMinusResult = PlusMinus(new List<int> { 1, 1, 0, -1, -1, -1 });
+        List<string> plusMinusResult = Solutions.PlusMinus(new List<int> { 1, 1, 0, -1, -1, -1 });
         output = $"[{string.Join(", ", plusMinusResult)}]";
         break;
     case 4:
-        Staircase(6);
+        Solutions.Staircase(6);
         break;
     case 5:
-        long[] arrayMinMaxSumResult = ArrayMinMaxSum(new List<int> { 256741038, 623958417, 467905213, 714532089, 938071625 });
+        long[] arrayMinMaxSumResult = Solutions.ArrayMinMaxSum(new List<int> { 256741038, 623958417, 467905213, 714532089, 938071625 });
         output = $"[{string.Join(", ", arrayMinMaxSumResult)}]";
         break;
     case 6:
-        int bccResult = BirthdayCakeCandles(new List<int> { 3, 2, 1, 3 });
+        int bccResult = Solutions.BirthdayCakeCandles(new List<int> { 3, 2, 1, 3 });
         output = bccResult.ToString();
         break;
 
@@ -89,7 +96,7 @@ switch (input)
         break;
 
     case 8:
-        ListNode? addTwoNumbersResult = AddTwoNumbers(
+        ListNode? addTwoNumbersResult = Solutions.AddTwoNumbers(
             new ListNode(2, new ListNode(4, new ListNode(3))),
             new ListNode(5, new ListNode(6, new ListNode(8))));
         output = $"[{string.Join(", ", addTwoNumbersResult)}]";
@@ -136,49 +143,49 @@ switch (input)
         output = $"[{string.Join(", ", searchRange)}]";
         break;
     case 18:
-        Node bst = new Node(10);
-        bst.Left = new Node(20);
-        bst.Left.Left = new Node(40);
-        bst.Left.Right = new Node(60);
-        bst.Right = new Node(30);
-        bst.Right.Left = new Node(50);
-        var bstResult = BST.InOrderTraversal(bst);
+        TreeNode node = new TreeNode(10);
+        node.Left = new TreeNode(20);
+        node.Left.Left = new TreeNode(40);
+        node.Left.Right = new TreeNode(60);
+        node.Right = new TreeNode(30);
+        node.Right.Left = new TreeNode(50);
+        var bstResult = bst.InOrderTraversal(node);
         output = $"[{string.Join(", ", bstResult)}]";
         break;
     case 19:
-        Node bst1 = new Node(6);
-        bst1.Left = new Node(3);
-        bst1.Left.Right = new Node(1);
-        bst1.Right = new Node(2);
-        bst1.Right.Left = new Node(2);
-        var bst1Result = BST.PreOrderTraversal(bst1);
+        TreeNode bst1 = new TreeNode(6);
+        bst1.Left = new TreeNode(3);
+        bst1.Left.Right = new TreeNode(1);
+        bst1.Right = new TreeNode(2);
+        bst1.Right.Left = new TreeNode(2);
+        var bst1Result = bst.PreOrderTraversal(bst1);
         output = $"[{string.Join(", ", bst1Result)}]";
         break;
     case 20:
-        Node bst2 = new Node(19);
-        bst2.Left = new Node(10);
-        bst2.Left.Left = new Node(11);
-        bst2.Left.Right = new Node(13);
-        bst2.Right = new Node(8);
-        var bst2Result = BST.PostOrderTraversal(bst2);
+        TreeNode bst2 = new TreeNode(19);
+        bst2.Left = new TreeNode(10);
+        bst2.Left.Left = new TreeNode(11);
+        bst2.Left.Right = new TreeNode(13);
+        bst2.Right = new TreeNode(8);
+        var bst2Result = bst.PostOrderTraversal(bst2);
         output = $"[{string.Join(", ", bst2Result)}]";
         break;
     case 21:
-        Node bft = new Node(1);
-        bft.Left = new Node(2);
-        bft.Left.Left = new Node(4);
-        bft.Left.Right = new Node(5);
-        bft.Right = new Node(3);
-        var bftResult = BST.BreadthFirstTraversalI(bft);
+        TreeNode bft = new TreeNode(1);
+        bft.Left = new TreeNode(2);
+        bft.Left.Left = new TreeNode(4);
+        bft.Left.Right = new TreeNode(5);
+        bft.Right = new TreeNode(3);
+        var bftResult = bst.BreadthFirstTraversalI(bft);
         output = $"[{string.Join(", ", bftResult)}]";
         break;
     case 22:
-        Node lot = new Node(3);
-        lot.Left = new Node(9);
-        lot.Right = new Node(20);
-        lot.Right.Left = new Node(15);
-        lot.Right.Right = new Node(7);
-        var lotResult = BST.LevelOrderTraversal(lot);
+        TreeNode lot = new TreeNode(3);
+        lot.Left = new TreeNode(9);
+        lot.Right = new TreeNode(20);
+        lot.Right.Left = new TreeNode(15);
+        lot.Right.Right = new TreeNode(7);
+        var lotResult = bst.LevelOrderTraversal(lot);
         output = "[";
         foreach (var result in lotResult)
         {
@@ -187,12 +194,12 @@ switch (input)
         output += "]";
         break;
     case 23:
-        Node bulot = new Node(3);
-        bulot.Left = new Node(9);
-        bulot.Right = new Node(20);
-        bulot.Right.Left = new Node(15);
-        bulot.Right.Right = new Node(7);
-        var bulotResult = BST.BottomUpLevelOrderTraversal(bulot);
+        TreeNode bulot = new TreeNode(3);
+        bulot.Left = new TreeNode(9);
+        bulot.Right = new TreeNode(20);
+        bulot.Right.Left = new TreeNode(15);
+        bulot.Right.Right = new TreeNode(7);
+        var bulotResult = bst.BottomUpLevelOrderTraversal(bulot);
         output = "[";
         foreach (var result in bulotResult)
         {
@@ -201,49 +208,49 @@ switch (input)
         output += "]";
         break;
     case 24:
-        Node bubft = new Node(1);
-        bubft.Left = new Node(2);
-        bubft.Right = new Node(3);
-        bubft.Left.Left = new Node(4);
-        bubft.Left.Right = new Node(5);
-        var bubftResult = BST.BottomUpBreadthFirstTraversal(bubft);
+        TreeNode bubft = new TreeNode(1);
+        bubft.Left = new TreeNode(2);
+        bubft.Right = new TreeNode(3);
+        bubft.Left.Left = new TreeNode(4);
+        bubft.Left.Right = new TreeNode(5);
+        var bubftResult = bst.BottomUpBreadthFirstTraversal(bubft);
         output = $"[{string.Join(", ", bubftResult)}]";
         break;
     case 25:
-        Node btmd = new Node(0);
-        btmd.Left = new Node(2);
-        btmd.Right = new Node(4);
-        btmd.Left.Left = new Node(1);
-        btmd.Left.Left.Left = new Node(5);
-        btmd.Left.Left.Right = new Node(1);
-        btmd.Right.Left = new Node(3);
-        btmd.Right.Left.Right = new Node(6);
-        btmd.Right.Right = new Node(-1);
-        btmd.Right.Right.Right = new Node(8);
-        var btmdResult = BST.BinaryTreeMinimumDepthI(btmd);
+        TreeNode btmd = new TreeNode(0);
+        btmd.Left = new TreeNode(2);
+        btmd.Right = new TreeNode(4);
+        btmd.Left.Left = new TreeNode(1);
+        btmd.Left.Left.Left = new TreeNode(5);
+        btmd.Left.Left.Right = new TreeNode(1);
+        btmd.Right.Left = new TreeNode(3);
+        btmd.Right.Left.Right = new TreeNode(6);
+        btmd.Right.Right = new TreeNode(-1);
+        btmd.Right.Right.Right = new TreeNode(8);
+        var btmdResult = bst.BinaryTreeMinimumDepthI(btmd);
         output = btmdResult.ToString();
         break;
     case 26:
-        Node btmd1 = new Node(0);
-        btmd1.Left = new Node(2);
-        btmd1.Right = new Node(4);
-        btmd1.Left.Left = new Node(1);
-        btmd1.Left.Left.Left = new Node(5);
-        btmd1.Left.Left.Right = new Node(1);
-        btmd1.Right.Left = new Node(3);
-        btmd1.Right.Left.Right = new Node(6);
-        btmd1.Right.Right = new Node(-1);
-        btmd1.Right.Right.Right = new Node(8);
-        var btmd1Result = BST.BinaryTreeMinimumDepthII(btmd1);
+        TreeNode btmd1 = new TreeNode(0);
+        btmd1.Left = new TreeNode(2);
+        btmd1.Right = new TreeNode(4);
+        btmd1.Left.Left = new TreeNode(1);
+        btmd1.Left.Left.Left = new TreeNode(5);
+        btmd1.Left.Left.Right = new TreeNode(1);
+        btmd1.Right.Left = new TreeNode(3);
+        btmd1.Right.Left.Right = new TreeNode(6);
+        btmd1.Right.Right = new TreeNode(-1);
+        btmd1.Right.Right.Right = new TreeNode(8);
+        var btmd1Result = bst.BinaryTreeMinimumDepthII(btmd1);
         output = btmd1Result.ToString();
         break;
     case 27:
-        int numBST = BST.NumberOfUniqueBinarySearchTrees(4);
+        int numBST = bst.NumberOfUniqueBinarySearchTrees(4);
         output = numBST.ToString();
         break;
     case 28:
         output = "[";
-        IList<IList<string>> dpResults = DP.PalindromePartioning("poop");
+        IList<IList<string>> dpResults = dp.PalindromePartioning("poop");
         foreach (var result in dpResults)
         {
             output += $"[{string.Join(", ", result)}]";
@@ -251,16 +258,48 @@ switch (input)
         output += "]";
         break;
     case 29:
-        int longest = StringSols.LongestSubstringWithNonRepeatingChars("gang");
+        int longest = stringSolutions.LongestSubstringWithNonRepeatingChars("gang");
         output = longest.ToString();
         break;
     case 30:
-        int reversed = IntegerSols.ReverseInteger(-2147483648);
+        int reversed = integerSolutions.ReverseInteger(-2147483648);
         output = reversed.ToString();
         break;
     case 31:
-        double median = ArraySols.FindMedianSortedArrays(new int[] { 1, 3 }, new int[] { 2, 4 });
+        double median = arraySolutions.FindMedianSortedArrays(new int[] { 1, 3 }, new int[] { 2, 4 });
         output = median.ToString();
+        break;
+    case 32:
+        int numUniques = arraySolutions.MoveUniquesToFront(new int[] { 0, 0, 1, 1, 1, 2, 2, 3, 3, 4 });
+        output = numUniques.ToString();
+        break;
+    case 33:
+        char[] reversedChars = stringSolutions.ReverseString(new char[] { 'h', 'a', 'n', 'n', 'a', 'H' });
+        output = $"[{string.Join(", ", reversedChars)}]";
+        break;
+    case 34:
+        int maxDepth = bst.BinaryTreeMaximumDepth(new TreeNode(1, null, new TreeNode(2, new TreeNode(3))));
+        output = maxDepth.ToString();
+        break;
+    case 35:
+        int[] merged = arraySolutions.MergeAndSortArrays(new int[] { 1, 2, 3, 0, 0, 0 }, 3, new int[] { 2, 5, 6 }, 3);
+        output = $"[{string.Join(", ", merged)}]";
+        break;
+    case 36:
+        int climbStairs = dp.NumberOfWaysClimbStairs(1);
+        output = climbStairs.ToString();
+        break;
+    case 37:
+        int[] shuffled = arraySolutions.ShuffleArray(new int[] { 1, 2, 3, 4, 5 });
+        output = $"[{string.Join(", ", shuffled)}]";
+        break;
+    case 38:
+        IList<string> fizzbuzz = arraySolutions.FizzBuzz(0);
+        output = $"[{string.Join(", ", fizzbuzz)}]";
+        break;
+    case 39:
+        bool isValid = misc.IsValidParenthesis("){");
+        output = isValid.ToString();
         break;
 }
 

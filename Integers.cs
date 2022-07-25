@@ -1,4 +1,4 @@
-public class IntegerSolutions
+public class Integers
 {
     public int ReverseInteger(int x)
     {

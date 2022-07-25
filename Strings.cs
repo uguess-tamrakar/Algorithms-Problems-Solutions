@@ -1,5 +1,31 @@
-public class StringSolutions
+public class Strings
 {
+    public char[] ReverseString(char[] s)
+    {
+        if (s.Length < 2) return s;
+        int mid = s.Length / 2;
+        int left = mid - 1;
+        int right = (s.Length % 2 == 0) ? mid : mid + 1;
+
+        while (left >= 0)
+        {
+            char leftChar = s[left];
+            char rightChar = s[right];
+            s[left--] = rightChar;
+            s[right++] = leftChar;
+        }
+
+        return s;
+    }
+
+    private void SwapArrayItems(int[] nums, int left, int right)
+    {
+        int leftItem = nums[left];
+        int rightItem = nums[right];
+        nums[right] = leftItem;
+        nums[left] = rightItem;
+    }
+
     public int LongestSubstringWithNonRepeatingChars(string s)
     {
         if (s == null || s.Length == 0) return 0;
