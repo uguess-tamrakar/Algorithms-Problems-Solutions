@@ -1,5 +1,5 @@
 {
-    "debug.console.fontSize": 10,
+    "debug.console.fontSize": 12,
     "debug.console.closeOnEnd": true,
     "editor.formatOnType": true
 }

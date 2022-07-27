@@ -1,5 +1,18 @@
 public class ArraysLists
 {
+    public int MaxStockProfit(int[] prices)
+    {
+        int maxProfit = 0;
+        for (int i = 1; i < prices.Length; i++)
+        {
+            if (prices[i - 1] < prices[i])
+            {
+                maxProfit += prices[i] - prices[i - 1];
+            }
+        }
+        return maxProfit;
+    }
+
     public IList<string> FizzBuzz(int n)
     {
         IList<string> result = new List<string>();
