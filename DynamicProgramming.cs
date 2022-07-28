@@ -1,5 +1,20 @@
-public class DP
+public class DynamicProgramming
 {
+    public int MaxProfitInStock(int[] prices)
+    {
+        int maxProfit = 0;
+        int minPrice = prices[0];
+
+        for (int i = 1; i < prices.Length; i++)
+        {
+            int profit = prices[i] - minPrice;
+            if (profit < 0) minPrice = prices[i];
+            if (maxProfit < profit) maxProfit = profit;
+        }
+
+        return maxProfit;
+    }
+
     public int NumberOfWaysClimbStairs(int n)
     {
         if (n < 3) return n;

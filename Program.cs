@@ -5,7 +5,7 @@ using static Solutions;
 Console.WriteLine();
 
 BinarySearchTree bst = new BinarySearchTree();
-DP dp = new DP();
+DynamicProgramming dp = new DynamicProgramming();
 Strings stringSolutions = new Strings();
 Integers integerSolutions = new Integers();
 ArraysLists arraySolutions = new ArraysLists();
@@ -267,6 +267,10 @@ switch (problem)
     case nameof(integerSolutions.ReverseIntegerII):
         int reversedInt = integerSolutions.ReverseIntegerII(900000);
         output = reversedInt.ToString();
+        break;
+    case nameof(DynamicProgramming.MaxProfitInStock):
+        int maxStockProfit = dp.MaxProfitInStock(new int[] { 7, 1, 5, 3, 6, 4 });
+        output = maxStockProfit.ToString();
         break;
 }
 Console.WriteLine($"Result for {problems[input - 1]} problem is: {output}");
