@@ -264,13 +264,13 @@ switch (problem)
         int maxProfit = arraySolutions.MaxStockProfit(new int[] { 1, 2, 3, 4, 5 });
         output = maxProfit.ToString();
         break;
-    case nameof(integerSolutions.ReverseIntegerII):
+    case nameof(Integers.ReverseIntegerII):
         int reversedInt = integerSolutions.ReverseIntegerII(900000);
         output = reversedInt.ToString();
         break;
-    case nameof(dp.GetMaxProfitInStock):
-        int maxProfitInStock = dp.GetMaxProfitInStock(new int[] { 7, 1, 5, 3, 6, 4 });
-        output = maxProfitInStock.ToString();
+    case nameof(DynamicProgramming.MaxProfitInStock):
+        int maxStockProfit = dp.MaxProfitInStock(new int[] { 7, 1, 5, 3, 6, 4 });
+        output = maxStockProfit.ToString();
         break;
 }
 Console.WriteLine($"Result for {problems[input - 1]} problem is: {output}");

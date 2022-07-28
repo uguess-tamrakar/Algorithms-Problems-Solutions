@@ -41,5 +41,5 @@ public enum PracticeProblem
     IsValidParenthesis,
     MaxStockProfit,
     ReverseIntegerII,
-    GetMaxProfitInStock
+    MaxProfitInStock,
 }

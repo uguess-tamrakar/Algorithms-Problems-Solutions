@@ -1,14 +1,15 @@
 public class DynamicProgramming
 {
-    public int GetMaxProfitInStock(int[] prices)
+    public int MaxProfitInStock(int[] prices)
     {
-        int minPrice = int.MaxValue;
         int maxProfit = 0;
+        int minPrice = prices[0];
 
-        for (int i = 0; i < prices.Length; i++)
+        for (int i = 1; i < prices.Length; i++)
         {
-            if (prices[i] < minPrice) minPrice = prices[i];
-            else if (prices[i] - minPrice > maxProfit) maxProfit = prices[i] - minPrice;
+            int profit = prices[i] - minPrice;
+            if (profit < 0) minPrice = prices[i];
+            if (maxProfit < profit) maxProfit = profit;
         }
 
         return maxProfit;
