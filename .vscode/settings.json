@@ -1,5 +1,6 @@
 {
-    "debug.console.fontSize": 12,
+    "debug.console.fontSize": 10,
     "debug.console.closeOnEnd": true,
-    "editor.formatOnType": true
+    "editor.formatOnType": true,
+    "debug.console.fontFamily": "'Fira Code'"
 }

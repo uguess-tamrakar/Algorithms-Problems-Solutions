@@ -40,5 +40,6 @@ public enum PracticeProblem
     FizzBuzz,
     IsValidParenthesis,
     MaxStockProfit,
-    ReverseIntegerII
+    ReverseIntegerII,
+    GetMaxProfitInStock
 }
