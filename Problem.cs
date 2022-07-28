@@ -42,4 +42,6 @@ public enum PracticeProblem
     MaxStockProfit,
     ReverseIntegerII,
     MaxProfitInStock,
+    IsValidBST,
+    IsPalindromeString
 }

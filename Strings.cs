@@ -1,5 +1,23 @@
+using System.Text.RegularExpressions;
+
 public class Strings
 {
+    public bool IsPalindromeString(string s)
+    {
+        string sanitized = Regex.Replace(s, "[^a-zA-Z0-9]", string.Empty);
+        int mid = sanitized.Length / 2;
+        int left = mid - 1;
+        int right = sanitized.Length % 2 == 0 ? mid : mid + 1;
+
+        while (left >= 0 && right < sanitized.Length)
+        {
+            if (char.ToLower(sanitized[left]) != char.ToLower(sanitized[right])) return false;
+            left--;
+            right++;
+        }
+        return true;
+    }
+
     public char[] ReverseString(char[] s)
     {
         if (s.Length < 2) return s;

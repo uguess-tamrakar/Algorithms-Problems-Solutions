@@ -1,17 +1,16 @@
 public class BinarySearchTree
 {
-    public class TreeNode
-    {
-        public int Value { get; set; }
-        public TreeNode? Left { get; set; }
-        public TreeNode? Right { get; set; }
 
-        public TreeNode(int value, TreeNode? left = null, TreeNode? right = null)
-        {
-            Value = value;
-            Left = left;
-            Right = right;
-        }
+    public bool IsValidBST(TreeNode root)
+    {
+        return isValidRecursive(root, null, null);
+    }
+
+    private bool isValidRecursive(TreeNode current, int? low, int? high)
+    {
+        if (current == null) return true;
+        if ((low != null && current.Value <= low) || high != null && current.Value >= high) return false;
+        return isValidRecursive(current.Left, low, current.Value) && isValidRecursive(current.Right, current.Value, high);
     }
 
     public int NumberOfUniqueBinarySearchTrees(int n)
@@ -233,5 +232,19 @@ public class BinarySearchTree
         TraversePostOrder(result, current.Left);
         TraversePostOrder(result, current.Right);
         result.Add(current.Value);
+    }
+
+    public class TreeNode
+    {
+        public int Value { get; set; }
+        public TreeNode? Left { get; set; }
+        public TreeNode? Right { get; set; }
+
+        public TreeNode(int value, TreeNode? left = null, TreeNode? right = null)
+        {
+            Value = value;
+            Left = left;
+            Right = right;
+        }
     }
 }

@@ -272,6 +272,14 @@ switch (problem)
         int maxStockProfit = dp.MaxProfitInStock(new int[] { 7, 1, 5, 3, 6, 4 });
         output = maxStockProfit.ToString();
         break;
+    case nameof(BinarySearchTree.IsValidBST):
+        bool isValidBST = bst.IsValidBST(new TreeNode(5, new TreeNode(1), new TreeNode(9, new TreeNode(6), new TreeNode(10, new TreeNode(7)))));
+        output = isValidBST.ToString();
+        break;
+    case nameof(Strings.IsPalindromeString):
+        bool isPalindromeString = stringSolutions.IsPalindromeString("race a car");
+        output = isPalindromeString.ToString();
+        break;
 }
 Console.WriteLine($"Result for {problems[input - 1]} problem is: {output}");
 Console.WriteLine();

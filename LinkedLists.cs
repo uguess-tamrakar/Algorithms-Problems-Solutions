@@ -9,7 +9,10 @@ public class LinkedLists
 
     public void DeleteNode(ListNode node)
     {
-        node.val = node.next.val;
-        node.next = node.next.next;
+        if (node != null)
+        {
+            node.val = node.next!.val;
+            node.next = node.next.next;
+        }
     }
 }
