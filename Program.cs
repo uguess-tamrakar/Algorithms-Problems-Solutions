@@ -280,6 +280,19 @@ switch (problem)
         bool isPalindromeString = stringSolutions.IsPalindromeString("race a car");
         output = isPalindromeString.ToString();
         break;
+    case nameof(ArraysLists.MinimumSwapsToOrder):
+        int minSwaps = arraySolutions.MinimumSwapsToOrder(new int[] { 7, 1, 3, 2, 4, 5, 6 });
+        output = minSwaps.ToString();
+        break;
+    case nameof(Strings.CommonStrings):
+        output = stringSolutions.CommonStrings("hi", "world");
+        break;
+    case nameof(ArraysLists.BubbleSort):
+        arraySolutions.BubbleSort(new List<int> { 4, 2, 3, 1 });
+        break;
+    case nameof(Strings.MakeAnagram):
+        output = stringSolutions.MakeAnagram("cde", "abc").ToString();
+        break;
 }
 Console.WriteLine($"Result for {problems[input - 1]} problem is: {output}");
 Console.WriteLine();

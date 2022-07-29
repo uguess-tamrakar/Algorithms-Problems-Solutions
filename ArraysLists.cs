@@ -1,5 +1,78 @@
 public class ArraysLists
 {
+    public int MaxNonAdjacentSubsetSum(int[] arr)
+    {
+        int maxSum = int.MinValue;
+
+        for (int i = 0; i < arr.Length; i++)
+        {
+            int max = arr[i];
+            int j = i + 2;
+            while (j < arr.Length)
+            {
+                max += arr[j];
+            }
+        }
+    }
+
+    private List<int> _a = new();
+    public void BubbleSort(List<int> a)
+    {
+        _a = a;
+        int n = a.Count;
+        int swaps = 0;
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < n - 1; j++)
+            {
+                // Swap adjacent elements if they are in decreasing order
+                if (a[j] > a[j + 1])
+                {
+                    swap(a[j], a[j + 1]);
+                    swaps++;
+                }
+            }
+        }
+
+        Console.WriteLine($"Array is sorted in {swaps} swaps.");
+        Console.WriteLine($"First Element: {_a[0]}");
+        Console.WriteLine($"Last Element: {_a[n - 1]}");
+    }
+
+    private void swap(int n1, int n2)
+    {
+        int swapIndex1 = _a.IndexOf(n1);
+        int swapIndex2 = _a.IndexOf(n2);
+        int temp = _a[swapIndex1];
+        _a[swapIndex1] = _a[swapIndex2];
+        _a[swapIndex2] = temp;
+    }
+
+    public int MinimumSwapsToOrder(int[] arr)
+    {
+        int swaps = 0;
+        Dictionary<int, int> dict = new Dictionary<int, int>();
+        // store each numbers with their current index in dictionary for faster lookup
+        for (int i = 0; i < arr.Length; i++)
+        {
+            dict.Add(arr[i], i);
+        }
+
+        for (int i = 0; i < arr.Length; i++)
+        {
+            if (arr[i] != i + 1)
+            {
+                int swapIndex = dict[i + 1];
+                int temp = arr[i];
+                arr[i] = arr[swapIndex];
+                arr[swapIndex] = temp;
+                dict[arr[swapIndex]] = swapIndex;
+                swaps++;
+            }
+        }
+        return swaps;
+    }
+
     public int MaxStockProfit(int[] prices)
     {
         int maxProfit = 0;

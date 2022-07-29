@@ -43,5 +43,9 @@ public enum PracticeProblem
     ReverseIntegerII,
     MaxProfitInStock,
     IsValidBST,
-    IsPalindromeString
+    IsPalindromeString,
+    MinimumSwapsToOrder,
+    CommonStrings,
+    BubbleSort,
+    MakeAnagram
 }

@@ -1,7 +1,43 @@
+using System.Text;
 using System.Text.RegularExpressions;
 
 public class Strings
 {
+    public int MakeAnagram(string a, string b)
+    {
+        List<char> chars = new List<char>(a.ToCharArray());
+        int notMatched = 0;
+        foreach (var c in b)
+        {
+            if (chars.Contains(c))
+            {
+                chars.Remove(c);
+            }
+            else notMatched++;
+        }
+
+        return notMatched + chars.Count;
+    }
+
+    public string CommonStrings(string s1, string s2)
+    {
+        Dictionary<char, int> dict = new Dictionary<char, int>();
+        for (int i = 0; i < s1.Length; i++)
+        {
+            if (!dict.ContainsKey(s1[i]))
+            {
+                dict.Add(s1[i], i);
+            }
+        }
+
+        StringBuilder common = new StringBuilder();
+        foreach (char s in s2)
+        {
+            if (dict.ContainsKey(s)) common.Append(s);
+        }
+        return common.ToString();
+    }
+
     public bool IsPalindromeString(string s)
     {
         string sanitized = Regex.Replace(s, "[^a-zA-Z0-9]", string.Empty);
