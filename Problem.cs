@@ -47,5 +47,9 @@ public enum PracticeProblem
     MinimumSwapsToOrder,
     CommonStrings,
     BubbleSort,
-    MakeAnagram
+    MakeAnagram,
+    AreBracketsBalanced,
+    MaxNonAdjacentSubsetSum,
+    MinimumBribes,
+    ReverseWords
 }

@@ -293,6 +293,18 @@ switch (problem)
     case nameof(Strings.MakeAnagram):
         output = stringSolutions.MakeAnagram("cde", "abc").ToString();
         break;
+    case nameof(Strings.AreBracketsBalanced):
+        output = stringSolutions.AreBracketsBalanced("{{[[(())]]}}").ToString();
+        break;
+    case nameof(ArraysLists.MaxNonAdjacentSubsetSum):
+        output = arraySolutions.MaxNonAdjacentSubsetSum(new int[] { -2, 1, 3, -4, 5 }).ToString();
+        break;
+    case nameof(ArraysLists.MinimumBribes):
+        arraySolutions.MinimumBribes(new List<int>{ 2,1,5,3,4 });
+        break;
+    case nameof(Strings.ReverseWords):
+        output = stringSolutions.ReverseWords("Reverse these words");
+        break;
 }
 Console.WriteLine($"Result for {problems[input - 1]} problem is: {output}");
 Console.WriteLine();

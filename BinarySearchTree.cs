@@ -1,6 +1,7 @@
 public class BinarySearchTree
 {
 
+
     public bool IsValidBST(TreeNode root)
     {
         return isValidRecursive(root, null, null);
@@ -51,10 +52,10 @@ public class BinarySearchTree
 
     private void BinaryTreeMaxDepthRecursive(TreeNode? current, int currentDepth, ref int maxDepth)
     {
-        currentDepth++;
         if (current == null) return;
         else
         {
+            currentDepth++;
             maxDepth = Math.Max(maxDepth, currentDepth);
             BinaryTreeMaxDepthRecursive(current.Left, currentDepth, ref maxDepth);
             BinaryTreeMaxDepthRecursive(current.Right, currentDepth, ref maxDepth);

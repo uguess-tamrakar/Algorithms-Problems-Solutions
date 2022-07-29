@@ -3,6 +3,61 @@ using System.Text.RegularExpressions;
 
 public class Strings
 {
+    public int SherlockAndAnagrams(string s)
+    {
+        Dictionary<char, int> charIndexes = new Dictionary<char, int>();
+        foreach (char c in s.ToCharArray())
+        {
+            
+        }
+
+        return 0;
+    }
+
+    public string ReverseWords(string s)
+    {
+        string[] words = s.Split(' ');
+        List<string> reversed = new();
+
+        foreach (string word in words)
+        {
+            string reversedWord = string.Empty;
+            for (int i = word.Length - 1; i >= 0; i--)
+            {
+                reversedWord += word[i];
+            }
+            reversed.Add(reversedWord);
+        }
+
+        return string.Join(' ', reversed);
+    }
+
+    public bool AreBracketsBalanced(string s)
+    {
+        if (s.Length % 2 != 0) return false;
+        char[] openBracs = { '[', '{', '(' };
+        char[] closingBracs = { ']', '}', ')' };
+
+        Stack<char> stack = new Stack<char>();
+
+        foreach(char c in s.ToCharArray())
+        {
+            if (openBracs.Contains(c))
+            {
+                stack.Push(c);
+            }
+            else if (closingBracs.Contains(c))
+            {
+                if (stack.Count == 0) return false;
+                char current = stack.Peek();
+                if ((current == '[' && c == ']') || (current =='{' && c == '}') || (current == '(' && c ==')')) stack.Pop();
+                else return false;
+            }
+        }
+
+        return stack.Count == 0;
+    }
+
     public int MakeAnagram(string a, string b)
     {
         List<char> chars = new List<char>(a.ToCharArray());

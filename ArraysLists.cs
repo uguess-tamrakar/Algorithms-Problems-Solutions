@@ -1,18 +1,39 @@
 public class ArraysLists
 {
-    public int MaxNonAdjacentSubsetSum(int[] arr)
+    public void MinimumBribes(List<int> q)
     {
-        int maxSum = int.MinValue;
-
-        for (int i = 0; i < arr.Length; i++)
+        // 2 1 5 3 4
+        int swaps = 0;
+        for (int i = q.Count - 1; i >= 0; i--)
         {
-            int max = arr[i];
-            int j = i + 2;
-            while (j < arr.Length)
+            if (q[i] - (i + 1) > 2)
             {
-                max += arr[j];
+                Console.WriteLine("Too chaotic");
+                break;
+            }
+
+            for (int j = Math.Max(0, q[i] - 2); j < i; j++)
+            {
+                if (q[j] > q[i]) swaps++;
             }
         }
+
+        Console.WriteLine(swaps);
+        return;
+    }
+
+    public int MaxNonAdjacentSubsetSum(int[] arr)
+    {
+        if (arr.Length == 0) return 0;
+        arr[0] = Math.Max(0, arr[0]);
+        if (arr.Length == 1) return 1;
+        arr[1] = Math.Max(arr[0], arr[1]);
+        for (int i = 2; i < arr.Length; i++)
+        {
+            arr[i] = Math.Max(arr[i - 1], arr[i] + arr[i - 2]);
+        }
+
+        return arr[arr.Length - 1];
     }
 
     private List<int> _a = new();
