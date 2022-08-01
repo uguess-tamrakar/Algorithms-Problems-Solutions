@@ -1,13 +1,27 @@
 public class BinarySearchTree
 {
+    public int LowestCommonAncestor(TreeNode root, int v1, int v2)
+    {
+        if (root is null) return -1;
 
+        if (v1 < root.Value && v2 < root.Value && root.Left != null)
+        {
+            return LowestCommonAncestor(root.Left, v1, v2);
+        }
+
+        if (v1 > root.Value && v2 > root.Value && root.Right != null)
+        {
+            return LowestCommonAncestor(root.Right, v1, v2);
+        }
+        return root.Value;
+    }
 
     public bool IsValidBST(TreeNode root)
     {
         return isValidRecursive(root, null, null);
     }
 
-    private bool isValidRecursive(TreeNode current, int? low, int? high)
+    private bool isValidRecursive(TreeNode? current, int? low, int? high)
     {
         if (current == null) return true;
         if ((low != null && current.Value <= low) || high != null && current.Value >= high) return false;

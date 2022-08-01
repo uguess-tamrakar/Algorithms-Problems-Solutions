@@ -1,5 +1,47 @@
+using System.Text;
+
 public class DynamicProgramming
 {
+    public string Abbreviation(string a, string b)
+    {
+        int modAllowed = b.Length;
+        string modified = new String(a);
+        for (int i = 0; i < a.Length && modAllowed > 0; i++)
+        {
+            // If the char does not exist at all
+            if (!b.Contains(a[i], StringComparison.OrdinalIgnoreCase))
+            {
+                modified = modified.Replace(a[i], '0');
+                modAllowed--;
+            }
+            else
+            {
+                // If char exists but does not match the casing
+                if (!b.Contains(a[i]))
+                {
+                    modAllowed--;
+                }
+            }
+        }
+        return modified.Replace("0", "").Equals(b, StringComparison.OrdinalIgnoreCase) ? "YES" : "NO";
+    }
+
+    public int NumberOfWaysClimbStairsII(int n)
+    {
+        if (n == 0) return 0;
+        List<int> dp = new List<int>();
+        dp.Add(1);
+        dp.Add(1);
+        dp.Add(2);
+        int index = 3;
+        while (index <= n)
+        {
+            dp.Add(dp[index - 1] + dp[index - 2] + dp[index - 3]);
+            index++;
+        }
+        return dp[n];
+    }
+
     public int MaxProfitInStock(int[] prices)
     {
         int maxProfit = 0;
@@ -15,7 +57,7 @@ public class DynamicProgramming
         return maxProfit;
     }
 
-    public int NumberOfWaysClimbStairs(int n)
+    public int NumberOfWaysClimbStairsI(int n)
     {
         if (n < 3) return n;
         int[] dp = new int[n + 1];

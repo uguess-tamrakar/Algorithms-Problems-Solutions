@@ -244,8 +244,8 @@ switch (problem)
         int[] merged = arraySolutions.MergeAndSortArrays(new int[] { 1, 2, 3, 0, 0, 0 }, 3, new int[] { 2, 5, 6 }, 3);
         output = $"[{string.Join(", ", merged)}]";
         break;
-    case nameof(dp.NumberOfWaysClimbStairs):
-        int climbStairs = dp.NumberOfWaysClimbStairs(1);
+    case nameof(dp.NumberOfWaysClimbStairsI):
+        int climbStairs = dp.NumberOfWaysClimbStairsI(1);
         output = climbStairs.ToString();
         break;
     case nameof(arraySolutions.ShuffleArray):
@@ -300,10 +300,34 @@ switch (problem)
         output = arraySolutions.MaxNonAdjacentSubsetSum(new int[] { -2, 1, 3, -4, 5 }).ToString();
         break;
     case nameof(ArraysLists.MinimumBribes):
-        arraySolutions.MinimumBribes(new List<int>{ 2,1,5,3,4 });
+        arraySolutions.MinimumBribes(new List<int> { 2, 1, 5, 3, 4 });
         break;
     case nameof(Strings.ReverseWords):
         output = stringSolutions.ReverseWords("Reverse these words");
+        break;
+    case nameof(dp.NumberOfWaysClimbStairsII):
+        output = dp.NumberOfWaysClimbStairsII(7).ToString();
+        break;
+    case nameof(Strings.SherlockAndAnagrams):
+        output = stringSolutions.SherlockAndAnagrams("kkkk").ToString();
+        break;
+    case nameof(BinarySearchTree.LowestCommonAncestor):
+        output = bst.LowestCommonAncestor(new TreeNode(4, new TreeNode(2, new TreeNode(1), new TreeNode(3)), new TreeNode(7, new TreeNode(6))), 1, 7).ToString();
+        break;
+    case nameof(ArraysLists.MaxNumberOfToys):
+        output = arraySolutions.MaxNumberOfToys(new List<int> { 1, 12, 5, 111, 200, 1000, 10 }, 50).ToString();
+        break;
+    case nameof(ArraysLists.WhatFlavors):
+        arraySolutions.WhatFlavors(new List<int> { 1, 4, 5, 3, 2 }, 4);
+        break;
+    case nameof(Strings.MakeCharactersAlternate):
+        output = stringSolutions.MakeCharactersAlternate("BABABABABA").ToString();
+        break;
+    case nameof(ArraysLists.LuckBalance):
+        output = arraySolutions.LuckBalance(0, LuckBalanceInput()).ToString();
+        break;
+    case nameof(DynamicProgramming.Abbreviation):
+        output = dp.Abbreviation("beFgH", "EFG");
         break;
 }
 Console.WriteLine($"Result for {problems[input - 1]} problem is: {output}");
@@ -333,3 +357,106 @@ int handleEmptyInput()
     int response = int.Parse(strResponse);
     return response;
 }
+
+List<List<int>> LuckBalanceInput() => new List<List<int>>{
+new List<int> {9709, 1},
+new List<int> {9704, 1},
+new List<int> {9080, 1},
+new List<int> {9060, 1},
+new List<int> {9467, 1},
+new List<int> {9847, 1},
+new List<int> {9590, 1},
+new List<int> {9225, 1},
+new List<int> {9304, 1},
+new List<int> {9527, 1},
+new List<int> {9329, 1},
+new List<int> {9962, 1},
+new List<int> {9928, 1},
+new List<int> {9525, 1},
+new List<int> {9491, 1},
+new List<int> {9993, 1},
+new List<int> {9829, 1},
+new List<int> {9153, 1},
+new List<int> {9936, 1},
+new List<int> {9899, 1},
+new List<int> {9312, 1},
+new List<int> {9862, 1},
+new List<int> {9610, 1},
+new List<int> {9502, 1},
+new List<int> {9522, 1},
+new List<int> {9359, 1},
+new List<int> {9617, 1},
+new List<int> {9431, 1},
+new List<int> {9757, 1},
+new List<int> {9292, 1},
+new List<int> {9875, 1},
+new List<int> {9041, 1},
+new List<int> {9626, 1},
+new List<int> {9656, 1},
+new List<int> {9893, 1},
+new List<int> {9442, 1},
+new List<int> {9369, 1},
+new List<int> {9282, 1},
+new List<int> {9117, 1},
+new List<int> {9245, 1},
+new List<int> {9841, 1},
+new List<int> {9715, 1},
+new List<int> {9778, 1},
+new List<int> {9150, 1},
+new List<int> {9738, 1},
+new List<int> {9699, 1},
+new List<int> {9642, 1},
+new List<int> {9517, 1},
+new List<int> {9407, 1},
+new List<int> {9675, 1},
+new List<int> {9918, 1},
+new List<int> {9031, 1},
+new List<int> {9369, 1},
+new List<int> {9935, 1},
+new List<int> {9868, 1},
+new List<int> {9934, 1},
+new List<int> {9660, 1},
+new List<int> {9931, 1},
+new List<int> {9273, 1},
+new List<int> {9168, 1},
+new List<int> {9404, 1},
+new List<int> {9017, 1},
+new List<int> {9288, 1},
+new List<int> {9532, 1},
+new List<int> {9700, 1},
+new List<int> {9291, 1},
+new List<int> {9126, 1},
+new List<int> {9782, 1},
+new List<int> {9545, 1},
+new List<int> {9076, 1},
+new List<int> {9346, 1},
+new List<int> {9018, 1},
+new List<int> {9732, 1},
+new List<int> {9032, 1},
+new List<int> {9992, 1},
+new List<int> {9630, 1},
+new List<int> {9952, 1},
+new List<int> {9885, 1},
+new List<int> {9328, 1},
+new List<int> {9419, 1},
+new List<int> {9705, 1},
+new List<int> {9611, 1},
+new List<int> {9440, 1},
+new List<int> {9907, 1},
+new List<int> {9303, 1},
+new List<int> {9449, 1},
+new List<int> {9876, 1},
+new List<int> {9335, 1},
+new List<int> {9723, 1},
+new List<int> {9698, 1},
+new List<int> {9823, 1},
+new List<int> {9070, 1},
+new List<int> {9258, 1},
+new List<int> {9102, 1},
+new List<int> {9370, 1},
+new List<int> {9788, 1},
+new List<int> {9725, 1},
+new List<int> {9811, 1},
+new List<int> {9474, 1},
+new List<int> {9602, 1}
+};

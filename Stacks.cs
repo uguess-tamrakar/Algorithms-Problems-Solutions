@@ -1,4 +1,4 @@
-public class Stack
+public class Stacks
 {
     private Stack<int> _stack = new Stack<int>();
     private int _min;

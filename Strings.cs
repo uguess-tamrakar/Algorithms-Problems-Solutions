@@ -3,15 +3,46 @@ using System.Text.RegularExpressions;
 
 public class Strings
 {
+    public int MakeCharactersAlternate(string s)
+    {
+        if (string.IsNullOrEmpty(s)) return 0;
+        int deletions = 0;
+        char lastUnique = s[0];
+        for (int i = 1; i < s.Length; i++)
+        {
+            if (s[i] == lastUnique)
+            {
+                deletions++;
+            }
+            else
+            {
+                lastUnique = s[i];
+            }
+        }
+        return deletions;
+    }
+
     public int SherlockAndAnagrams(string s)
     {
-        Dictionary<char, int> charIndexes = new Dictionary<char, int>();
-        foreach (char c in s.ToCharArray())
+        var refs = new Dictionary<string, int>();
+        var total = 0;
+
+        for (int start = 0; start < s.Length; start++)
         {
-            
+            for (int length = 1; length <= s.Length - start; length++)
+            {
+                var subStr = new string(s.Substring(start, length).OrderBy(c => c).ToArray());
+                if (refs.ContainsKey(subStr))
+                {
+                    total += refs[subStr];
+                    refs[subStr] += 1;
+                }
+                else
+                    refs[subStr] = 1;
+            }
         }
 
-        return 0;
+        return total;
     }
 
     public string ReverseWords(string s)
@@ -40,7 +71,7 @@ public class Strings
 
         Stack<char> stack = new Stack<char>();
 
-        foreach(char c in s.ToCharArray())
+        foreach (char c in s.ToCharArray())
         {
             if (openBracs.Contains(c))
             {
@@ -50,7 +81,7 @@ public class Strings
             {
                 if (stack.Count == 0) return false;
                 char current = stack.Peek();
-                if ((current == '[' && c == ']') || (current =='{' && c == '}') || (current == '(' && c ==')')) stack.Pop();
+                if ((current == '[' && c == ']') || (current == '{' && c == '}') || (current == '(' && c == ')')) stack.Pop();
                 else return false;
             }
         }

@@ -1,5 +1,79 @@
 public class ArraysLists
 {
+    public int LuckBalance(int k, List<List<int>> contests)
+    {
+        if (contests.Count == 0) return 0;
+        int luck = 0;
+
+        List<List<int>> imps = contests.OrderByDescending(contest => contest[0]).ToList();
+        for (int i = 0; i < imps.Count; i++)
+        {
+            if (imps[i][1] == 0)
+            {
+                luck += imps[i][0];
+            }
+            else if (k > 0 && imps[i][1] == 1)
+            {
+                luck += imps[i][0];
+                k--;
+            }
+            else
+            {
+                luck -= imps[i][0];
+            }
+        }
+
+        return luck;
+    }
+
+    public void WhatFlavors(List<int> cost, int money)
+    {
+        Dictionary<int, int> refs = new Dictionary<int, int>();
+        for (int i = 0; i < cost.Count; i++)
+        {
+            if (cost[i] < money)
+            {
+                int remaining = money - cost[i];
+                if (!refs.ContainsKey(remaining))
+                {
+                    refs.Add(cost[i], i);
+                }
+                else
+                {
+                    Console.WriteLine($"{refs[remaining] + 1} {i + 1}");
+                    break;
+                }
+            }
+        }
+
+        Console.Write(string.Empty);
+    }
+
+    public int MinimumAbsoluteDifference(List<int> arr)
+    {
+        int min = int.MaxValue;
+        arr.Sort();
+        for (int i = 0; i < arr.Count - 1; i++)
+        {
+            min = Math.Min(min, Math.Abs(arr[i + 1] - arr[i]));
+        }
+        return min;
+    }
+
+    public int MaxNumberOfToys(List<int> prices, int k)
+    {
+        int result = 0;
+
+        prices.Sort();
+        while (k > prices[result])
+        {
+            k = k - prices[result];
+            result++;
+        }
+
+        return result;
+    }
+
     public void MinimumBribes(List<int> q)
     {
         // 2 1 5 3 4

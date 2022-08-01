@@ -35,7 +35,8 @@ public enum PracticeProblem
     ReverseString,
     BinaryTreeMaximumDepth,
     MergeAndSortArrays,
-    NumberOfWaysClimbStairs,
+    NumberOfWaysClimbStairsI,
+    NumberOfWaysClimbStairsII,
     ShuffleArray,
     FizzBuzz,
     IsValidParenthesis,
@@ -51,5 +52,12 @@ public enum PracticeProblem
     AreBracketsBalanced,
     MaxNonAdjacentSubsetSum,
     MinimumBribes,
-    ReverseWords
+    ReverseWords,
+    SherlockAndAnagrams,
+    LowestCommonAncestor,
+    MaxNumberOfToys,
+    WhatFlavors,
+    MakeCharactersAlternate,
+    LuckBalance,
+    Abbreviation
 }
