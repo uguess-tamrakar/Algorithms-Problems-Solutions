@@ -3,6 +3,31 @@ using System.Text.RegularExpressions;
 
 public class Strings
 {
+    public void CheckMagazine(List<string> magazine, List<string> note)
+    {
+        var dict = new Dictionary<string, int>();
+        foreach (var word in magazine)
+        {
+            if (dict.ContainsKey(word)) dict[word]++;
+            else dict.Add(word, 1);
+        }
+
+        bool valid = true;
+        foreach (var word in note)
+        {
+            if (dict.ContainsKey(word) && dict[word] > 0)
+            {
+                dict[word]--;
+            }
+            else
+            {
+                valid = false;
+            }
+        }
+
+        Console.WriteLine(valid ? "Yes" : "No");
+    }
+
     public int MakeCharactersAlternate(string s)
     {
         if (string.IsNullOrEmpty(s)) return 0;

@@ -300,7 +300,7 @@ switch (problem)
         output = arraySolutions.MaxNonAdjacentSubsetSum(new int[] { -2, 1, 3, -4, 5 }).ToString();
         break;
     case nameof(ArraysLists.MinimumBribes):
-        arraySolutions.MinimumBribes(new List<int> { 2, 1, 5, 3, 4 });
+        arraySolutions.MinimumBribes(new List<int> { 1,2,5,3,7,8,6,4 });
         break;
     case nameof(Strings.ReverseWords):
         output = stringSolutions.ReverseWords("Reverse these words");
@@ -327,7 +327,10 @@ switch (problem)
         output = arraySolutions.LuckBalance(0, LuckBalanceInput()).ToString();
         break;
     case nameof(DynamicProgramming.Abbreviation):
-        output = dp.Abbreviation("beFgH", "EFG");
+        output = dp.Abbreviation("AaABCD", "ABCD");
+        break;
+    case nameof(Strings.CheckMagazine):
+        stringSolutions.CheckMagazine(new List<string> { "two", "times", "three", "is", "not", "four" }, new List<string> { "two", "times", "two", "is", "four" });
         break;
 }
 Console.WriteLine($"Result for {problems[input - 1]} problem is: {output}");

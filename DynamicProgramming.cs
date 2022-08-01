@@ -4,23 +4,13 @@ public class DynamicProgramming
 {
     public string Abbreviation(string a, string b)
     {
-        int modAllowed = b.Length;
         string modified = new String(a);
-        for (int i = 0; i < a.Length && modAllowed > 0; i++)
+        for (int i = 0; i < a.Length; i++)
         {
             // If the char does not exist at all
-            if (!b.Contains(a[i], StringComparison.OrdinalIgnoreCase))
+            if (char.IsLower(a[i]) && !b.Contains(a[i], StringComparison.OrdinalIgnoreCase))
             {
                 modified = modified.Replace(a[i], '0');
-                modAllowed--;
-            }
-            else
-            {
-                // If char exists but does not match the casing
-                if (!b.Contains(a[i]))
-                {
-                    modAllowed--;
-                }
             }
         }
         return modified.Replace("0", "").Equals(b, StringComparison.OrdinalIgnoreCase) ? "YES" : "NO";

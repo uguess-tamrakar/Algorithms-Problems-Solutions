@@ -45,8 +45,6 @@ public class ArraysLists
                 }
             }
         }
-
-        Console.Write(string.Empty);
     }
 
     public int MinimumAbsoluteDifference(List<int> arr)
@@ -77,23 +75,23 @@ public class ArraysLists
     public void MinimumBribes(List<int> q)
     {
         // 2 1 5 3 4
-        int swaps = 0;
+        bool valid = true;
+        int bribes = 0;
         for (int i = q.Count - 1; i >= 0; i--)
         {
             if (q[i] - (i + 1) > 2)
             {
-                Console.WriteLine("Too chaotic");
+                valid = false;
                 break;
             }
 
             for (int j = Math.Max(0, q[i] - 2); j < i; j++)
             {
-                if (q[j] > q[i]) swaps++;
+                if (q[j] > q[i]) bribes++;
             }
         }
 
-        Console.WriteLine(swaps);
-        return;
+        Console.WriteLine(valid ? bribes : "Too chaotic");
     }
 
     public int MaxNonAdjacentSubsetSum(int[] arr)

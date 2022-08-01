@@ -59,5 +59,6 @@ public enum PracticeProblem
     WhatFlavors,
     MakeCharactersAlternate,
     LuckBalance,
-    Abbreviation
+    Abbreviation,
+    CheckMagazine
 }
