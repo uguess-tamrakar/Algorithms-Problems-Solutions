@@ -300,7 +300,7 @@ switch (problem)
         output = arraySolutions.MaxNonAdjacentSubsetSum(new int[] { -2, 1, 3, -4, 5 }).ToString();
         break;
     case nameof(ArraysLists.MinimumBribes):
-        arraySolutions.MinimumBribes(new List<int> { 1,2,5,3,7,8,6,4 });
+        arraySolutions.MinimumBribes(new List<int> { 1, 2, 5, 3, 7, 8, 6, 4 });
         break;
     case nameof(Strings.ReverseWords):
         output = stringSolutions.ReverseWords("Reverse these words");
@@ -331,6 +331,10 @@ switch (problem)
         break;
     case nameof(Strings.CheckMagazine):
         stringSolutions.CheckMagazine(new List<string> { "two", "times", "three", "is", "not", "four" }, new List<string> { "two", "times", "two", "is", "four" });
+        break;
+    case nameof(ArraysLists.CountClosedInventory):
+        List<int> closedInventoryCount = arraySolutions.CountClosedInventory("*|*|*|", new List<int> { 1 }, new List<int> { 6 });
+        output = $"[{string.Join(", ", closedInventoryCount)}]";
         break;
 }
 Console.WriteLine($"Result for {problems[input - 1]} problem is: {output}");

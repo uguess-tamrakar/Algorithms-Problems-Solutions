@@ -1,29 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\yogest\\OneDrive - kochind.com\\Documents\\Algorithms-Problems-Solutions\\Csharp\\Algorithms.csproj": {}
+    "/Users/yogeshtamrakar/Documents/Algorithms/CSharp/Algorithms.csproj": {}
   },
   "projects": {
-    "C:\\Users\\yogest\\OneDrive - kochind.com\\Documents\\Algorithms-Problems-Solutions\\Csharp\\Algorithms.csproj": {
+    "/Users/yogeshtamrakar/Documents/Algorithms/CSharp/Algorithms.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\yogest\\OneDrive - kochind.com\\Documents\\Algorithms-Problems-Solutions\\Csharp\\Algorithms.csproj",
+        "projectUniqueName": "/Users/yogeshtamrakar/Documents/Algorithms/CSharp/Algorithms.csproj",
         "projectName": "Algorithms",
-        "projectPath": "C:\\Users\\yogest\\OneDrive - kochind.com\\Documents\\Algorithms-Problems-Solutions\\Csharp\\Algorithms.csproj",
-        "packagesPath": "C:\\Users\\yogest\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\yogest\\OneDrive - kochind.com\\Documents\\Algorithms-Problems-Solutions\\Csharp\\obj\\",
+        "projectPath": "/Users/yogeshtamrakar/Documents/Algorithms/CSharp/Algorithms.csproj",
+        "packagesPath": "/Users/yogeshtamrakar/.nuget/packages/",
+        "outputPath": "/Users/yogeshtamrakar/Documents/Algorithms/CSharp/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\yogest\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/yogeshtamrakar/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://onpoint-packages-772949737666.d.codeartifact.us-east-1.amazonaws.com/nuget/onpoint-common/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
@@ -55,7 +52,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.302/RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -60,5 +60,6 @@ public enum PracticeProblem
     MakeCharactersAlternate,
     LuckBalance,
     Abbreviation,
-    CheckMagazine
+    CheckMagazine,
+    CountClosedInventory
 }
