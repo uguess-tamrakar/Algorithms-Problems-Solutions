@@ -1,5 +1,23 @@
 public class ArraysLists
 {
+    public List<int> GradingStudents(List<int> grades)
+    {
+        for (int i = 0; i < grades.Count; i++)
+        {
+            int currentGrade = grades[i];
+            if (currentGrade > 37)
+            {
+                int nxtMultiple5 = ((currentGrade / 5) + 1) * 5;
+                if (nxtMultiple5 - currentGrade < 3)
+                {
+                    grades[i] = nxtMultiple5;
+                }
+            }
+        }
+
+        return grades;
+    }
+
     public int LuckBalance(int k, List<List<int>> contests)
     {
         if (contests.Count == 0) return 0;

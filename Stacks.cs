@@ -21,11 +21,11 @@ public class Stacks
 
 public class QueueUsingStacks<T>
 {
-    private Stack<T> s1 = new Stack<T>();
-    private Stack<T> s2 = new Stack<T>();
+    // private Stack<T> s1 = new Stack<T>();
+    // private Stack<T> s2 = new Stack<T>();
 
-    public T Enqueue(T x)
-    {
-        Stack<T>
-    }
+    // public T Enqueue(T x)
+    // {
+    //     Stack<T>
+    // }
 }

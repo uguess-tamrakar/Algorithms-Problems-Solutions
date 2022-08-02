@@ -50,10 +50,6 @@ switch (problem)
         int bccResult = Solutions.BirthdayCakeCandles(new List<int> { 3, 2, 1, 3 });
         output = bccResult.ToString();
         break;
-    case nameof(Solutions.GradingStudents):
-        List<int> gradingStudentsResult = GradingStudents(new List<int> { 1, 2, 3, 4, 5 });
-        output = $"[{string.Join(", ", gradingStudentsResult)}]";
-        break;
     case nameof(Solutions.AddTwoNumbers):
         ListNode? addTwoNumbersResult = Solutions.AddTwoNumbers(
             new ListNode(2, new ListNode(4, new ListNode(3))),
@@ -331,6 +327,13 @@ switch (problem)
         break;
     case nameof(Strings.CheckMagazine):
         stringSolutions.CheckMagazine(new List<string> { "two", "times", "three", "is", "not", "four" }, new List<string> { "two", "times", "two", "is", "four" });
+        break;
+    case nameof(Strings.TimeConversion):
+        output = stringSolutions.TimeConversion("07:05:45PM");
+        break;
+    case nameof(ArraysLists.GradingStudents):
+        var gradingStudentsResult = arraySolutions.GradingStudents(new List<int>() { 73, 67, 38, 33 });
+        output = $"[{string.Join(", ", gradingStudentsResult)}]";
         break;
 }
 Console.WriteLine($"Result for {problems[input - 1]} problem is: {output}");

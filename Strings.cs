@@ -3,6 +3,49 @@ using System.Text.RegularExpressions;
 
 public class Strings
 {
+    public List<int> MatchingStrings(List<string> strings, List<string> queries)
+    {
+        Dictionary<string, int> stringWeights = new Dictionary<string, int>();
+        foreach (var s in strings)
+        {
+            if (stringWeights.ContainsKey(s)) stringWeights[s]++;
+            else stringWeights.Add(s, 1);
+        }
+
+        List<int> counts = new List<int>();
+        foreach (var query in queries)
+        {
+            if (stringWeights.ContainsKey(query)) counts.Add(stringWeights[query]);
+            else counts.Add(0);
+        }
+
+        return counts;
+    }
+
+    public string TimeConversion(string s)
+    {
+        string[] timeElements = s.Split(':');
+        string AMPM = timeElements[timeElements.Length - 1].Substring(2);
+        int hourElement = int.Parse(timeElements[0]);
+
+        if (AMPM.Equals("AM", StringComparison.OrdinalIgnoreCase))
+        {
+            if (hourElement == 12)
+            {
+                timeElements[0] = "00";
+            }
+        }
+        else if (AMPM.Equals("PM", StringComparison.OrdinalIgnoreCase))
+        {
+            if (hourElement != 12)
+            {
+                timeElements[0] = (hourElement + 12).ToString();
+            }
+        }
+
+        return string.Join(':', timeElements).Remove(8);
+    }
+
     public void CheckMagazine(List<string> magazine, List<string> note)
     {
         var dict = new Dictionary<string, int>();

@@ -342,11 +342,6 @@ public class Solutions
         return Array.Empty<int>();
     }
 
-    public static List<int> GradingStudents(List<int> grades)
-    {
-        throw new NotImplementedException();
-    }
-
     public static int BirthdayCakeCandles(List<int> candles)
     {
         candles.Sort();

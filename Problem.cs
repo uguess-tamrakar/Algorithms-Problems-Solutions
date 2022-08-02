@@ -6,7 +6,6 @@ public enum PracticeProblem
     Staircase,
     ArrayMinMaxSum,
     BirthdayCakeCandles,
-    GradingStudents,
     AddTwoNumbers,
     IsPalindrome,
     ZigzagConversion,
@@ -60,5 +59,7 @@ public enum PracticeProblem
     MakeCharactersAlternate,
     LuckBalance,
     Abbreviation,
-    CheckMagazine
+    CheckMagazine,
+    TimeConversion,
+    GradingStudents
 }
