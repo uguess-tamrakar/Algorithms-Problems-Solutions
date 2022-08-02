@@ -61,5 +61,6 @@ public enum PracticeProblem
     Abbreviation,
     CheckMagazine,
     TimeConversion,
-    GradingStudents
+    GradingStudents,
+    CountClosedInventory
 }

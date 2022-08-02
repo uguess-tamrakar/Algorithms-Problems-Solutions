@@ -17,6 +17,41 @@ public class ArraysLists
 
         return grades;
     }
+    
+    public List<int> CountClosedInventory(string s, List<int> startIndices, List<int> endIndices)
+    {
+        List<int> numItems = new List<int>(startIndices.Count);
+        for (int i = 0; i < startIndices.Count; i++)
+        {
+            int startIndex = startIndices[i];
+            int endIndex = endIndices[i];
+            int totalInventory = 0;
+            int numInventory = 0;
+            bool compartmentOpen = false;
+            for (int j = startIndex - 1; j < endIndex; j++)
+            {
+                if (compartmentOpen == false && s[j] == '|')
+                {
+                    compartmentOpen = true;
+                }
+                else if (compartmentOpen == true)
+                {
+                    if (s[j] == '*')
+                    {
+                        numInventory++;
+                    }
+                    else if (s[j] == '|')
+                    {
+                        totalInventory += numInventory;
+                        numInventory = 0;
+                    }
+                }
+            }
+            numItems.Add(numInventory);
+        }
+
+        return numItems;
+    }
 
     public int LuckBalance(int k, List<List<int>> contests)
     {
