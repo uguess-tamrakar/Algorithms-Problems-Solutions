@@ -1,5 +1,78 @@
 public class ArraysLists
 {
+    public long CountTriplets(List<long> arr, long r)
+    {
+        long count = 0;
+
+        // brute force
+        // for (int i = 0; i < arr.Count - 2; i++)
+        // {
+        //     long compare1 = arr[i] * r;
+
+        //     for (int j = i + 1; j < arr.Count - 1; j++)
+        //     {
+        //         if (arr[j] == compare1)
+        //         {
+        //             long compare2 = compare1 * r;
+        //             for (int k = j + 1; k < arr.Count; k++)
+        //             {
+        //                 if (arr[k] == compare2)
+        //                 {
+        //                     count++;
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
+
+        // optimal solution
+        Dictionary<int, long> secondNums = new Dictionary<int, long>();
+        Dictionary<int, long> thirdNums = new Dictionary<int, long>();
+
+        for (int i = 0; i < arr.Count; i++)
+        {
+            
+        }
+
+
+        return count;
+    }
+
+    public long ArrayManipulation(int n, List<List<int>> queries)
+    {
+        long[] arr = new long[n + 2];
+
+        for (int i = 0; i < queries.Count; i++)
+        {
+            // Brute force
+            // for (int j = 0; j < arr.Length; j++)
+            // {
+            //     int k = queries[i][2];
+            //     if (j >= queries[i][0] && j <= queries[i][1])
+            //     {
+            //         arr[j] = arr[j] + k;
+            //     }
+            // }
+
+            int k = queries[i][2];
+            arr[queries[i][0]] += k;
+            arr[queries[i][1] + 1] -= k;
+        }
+
+        for (int i = 1; i < arr.Length; i++)
+        {
+            arr[i] = arr[i] + arr[i - 1];
+        }
+
+        long max = long.MinValue;
+        for (int i = 0; i < arr.Length; i++)
+        {
+            max = Math.Max(arr[i], max);
+        }
+
+        return max;
+    }
+
     public List<int> GradingStudents(List<int> grades)
     {
         for (int i = 0; i < grades.Count; i++)
@@ -17,7 +90,7 @@ public class ArraysLists
 
         return grades;
     }
-    
+
     public List<int> CountClosedInventory(string s, List<int> startIndices, List<int> endIndices)
     {
         List<int> numItems = new List<int>(startIndices.Count);

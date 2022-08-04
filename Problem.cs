@@ -62,5 +62,7 @@ public enum PracticeProblem
     CheckMagazine,
     TimeConversion,
     GradingStudents,
-    CountClosedInventory
+    CountClosedInventory,
+    ArrayManipulation,
+    CountTriplets
 }

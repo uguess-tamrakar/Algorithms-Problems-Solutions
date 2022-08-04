@@ -1,4 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using System.Diagnostics;
 using static BinarySearchTree;
 using static Solutions;
 
@@ -25,6 +26,7 @@ Console.WriteLine();
 string output = string.Empty;
 string problem = problems[input - 1];
 
+Stopwatch watch = Stopwatch.StartNew();
 switch (problem)
 {
     case nameof(Solutions.TwoSum):
@@ -339,9 +341,25 @@ switch (problem)
         List<int> closedInventoryCount = arraySolutions.CountClosedInventory("*|*|*|", new List<int> { 1 }, new List<int> { 6 });
         output = $"[{string.Join(", ", closedInventoryCount)}]";
         break;
+    case nameof(ArraysLists.ArrayManipulation):
+        output = arraySolutions.ArrayManipulation(10, new List<List<int>>{
+            new List<int>{ 1, 5, 3 },
+            new List<int>{ 4, 8, 7 },
+            new List<int>{ 6, 9, 1 }
+        }).ToString();
+        break;
+    case nameof(ArraysLists.CountTriplets):
+        {
+            using StreamReader reader = new StreamReader(Directory.GetCurrentDirectory() + "/CountTriplets.txt");
+            string inputString = reader.ReadToEnd();
+            List<long> entry = inputString.Split(' ').Select(item => long.Parse(item)).ToList();
+            output = arraySolutions.CountTriplets(entry, 1).ToString();
+        }
+        break;
 }
+watch.Stop();
 Console.WriteLine($"Result for {problems[input - 1]} problem is: {output}");
-Console.WriteLine();
+Console.WriteLine($"The code execution time was: {watch.ElapsedTicks} ticks.");
 
 int askForInput()
 {
