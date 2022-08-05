@@ -64,5 +64,6 @@ public enum PracticeProblem
     GradingStudents,
     CountClosedInventory,
     ArrayManipulation,
-    CountTriplets
+    CountTriplets,
+    FrequencyQueries
 }

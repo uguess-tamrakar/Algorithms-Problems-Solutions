@@ -1,5 +1,41 @@
 public class ArraysLists
 {
+    public List<int> FrequencyQueries(List<List<int>> queries)
+    {
+        List<int> result = new List<int>();
+        Dictionary<int, int> frequencies = new Dictionary<int, int>();
+        int maxFreq = 0;
+
+        for (int i = 0; i < queries.Count; i++)
+        {
+            int query = queries[i][0];
+            int value = queries[i][1];
+            if (query == 1)
+            {
+                if (frequencies.ContainsKey(value)) frequencies[value]++;
+                else frequencies.Add(value, 1);
+                maxFreq = Math.Max(maxFreq, frequencies[value]);
+            }
+            else if (query == 2)
+            {
+                if (frequencies.ContainsKey(value) && frequencies[value] > 0)
+                {
+                    frequencies[value]--;
+                }
+            }
+            else if (query == 3)
+            {
+                if (frequencies.ContainsValue(value) && value <= maxFreq)
+                {
+                    result.Add(1);
+                }
+                else result.Add(0);
+            }
+        }
+
+        return result;
+    }
+
     public long CountTriplets(List<long> arr, long r)
     {
         long count = 0;
@@ -26,14 +62,32 @@ public class ArraysLists
         // }
 
         // optimal solution
-        Dictionary<int, long> secondNums = new Dictionary<int, long>();
-        Dictionary<int, long> thirdNums = new Dictionary<int, long>();
+        Dictionary<long, long> right = new Dictionary<long, long>();
+        Dictionary<long, long> left = new Dictionary<long, long>();
+
+        foreach (var item in arr)
+        {
+            if (right.ContainsKey(item)) right[item]++;
+            else right.Add(item, 1);
+        }
 
         for (int i = 0; i < arr.Count; i++)
         {
-            
-        }
+            long cLeft = 0, cRight = 0;
+            long mid = arr[i];
+            right[mid]--;
 
+            if (left.ContainsKey(mid / r) && mid % r == 0)
+            {
+                cLeft = left[mid / r];
+            }
+
+            if (right.ContainsKey(mid * r)) cRight = right[mid * r];
+
+            count += cLeft * cRight;
+            if (left.ContainsKey(mid)) left[mid]++;
+            else left.Add(mid, 1);
+        }
 
         return count;
     }

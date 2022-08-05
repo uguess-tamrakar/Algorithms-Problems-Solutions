@@ -356,10 +356,33 @@ switch (problem)
             output = arraySolutions.CountTriplets(entry, 1).ToString();
         }
         break;
+    case nameof(ArraysLists.FrequencyQueries):
+        {
+            var fqInput1 = new List<List<int>>
+            {
+                new List<int>{ 1, 3 },
+                new List<int>{ 2, 3 },
+                new List<int>{ 3, 2 },
+                new List<int>{ 1, 4 },
+                new List<int>{ 1, 5 },
+                new List<int>{ 1, 5 },
+                new List<int>{ 1, 4 },
+                new List<int>{ 3, 2 },
+                new List<int>{ 2, 4 },
+                new List<int>{ 3, 2 }
+            };
+            using StreamReader reader = new StreamReader(Directory.GetCurrentDirectory() + "/FrequencyQueries.txt");
+            string data = reader.ReadToEnd();
+            List<List<int>> entry = data.Split("\n").Select(item => item.Split(' ').Select(item => int.Parse(item)).ToList()).ToList();
+            List<int> fqResult = arraySolutions.FrequencyQueries(entry);
+            output = $"[{string.Join(',', fqResult)}]";
+        }
+        break;
 }
 watch.Stop();
 Console.WriteLine($"Result for {problems[input - 1]} problem is: {output}");
 Console.WriteLine($"The code execution time was: {watch.ElapsedTicks} ticks.");
+Console.WriteLine();
 
 int askForInput()
 {
