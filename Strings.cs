@@ -3,6 +3,38 @@ using System.Text.RegularExpressions;
 
 public class Strings
 {
+    public bool SherlockValidString(string s)
+    {
+        Dictionary<char, int> freqs = new Dictionary<char, int>();
+        Dictionary<int, int> occurs = new Dictionary<int, int>();
+
+        foreach(char c in s)
+        {
+            if (freqs.ContainsKey(c))
+            {
+                if (occurs.ContainsKey(freqs[c]))
+                {   
+                    occurs[freqs[c]]--;
+                    if (freqs[c] == 0) occurs.Remove(freqs[c]);
+                }
+                freqs[c]++;
+            }
+            else freqs.Add(c, 1);
+
+            if (occurs.ContainsKey(freqs[c])) occurs[freqs[c]]++;
+            else occurs.Add(freqs[c], 1);
+        }
+
+        if (occurs.Keys.Count > 2) return false;
+        else if (occurs.Keys.Count <= 1) return true;
+        else
+        {
+            int freqDiff = occurs.Keys.ElementAt(1) - occurs.Keys.ElementAt(0);
+            if (freqDiff > 1) return false;
+            else return occurs[occurs.Keys.ElementAt(1)] < 2;
+        }
+    }
+
     public List<int> MatchingStrings(List<string> strings, List<string> queries)
     {
         Dictionary<string, int> stringWeights = new Dictionary<string, int>();

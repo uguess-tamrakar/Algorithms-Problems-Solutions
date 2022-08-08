@@ -65,5 +65,7 @@ public enum PracticeProblem
     CountClosedInventory,
     ArrayManipulation,
     CountTriplets,
-    FrequencyQueries
+    FrequencyQueries,
+    FlipMatrixToMaximizeTopQuadrant,
+    SherlockValidString
 }

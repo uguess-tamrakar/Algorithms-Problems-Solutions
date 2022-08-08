@@ -10,6 +10,7 @@ DynamicProgramming dp = new DynamicProgramming();
 Strings stringSolutions = new Strings();
 Integers integerSolutions = new Integers();
 ArraysLists arraySolutions = new ArraysLists();
+Matrix matrix = new Matrix();
 Miscellaneous misc = new Miscellaneous();
 
 string[] problems = Enum.GetNames(typeof(PracticeProblem));
@@ -353,7 +354,7 @@ switch (problem)
             using StreamReader reader = new StreamReader(Directory.GetCurrentDirectory() + "/CountTriplets.txt");
             string inputString = reader.ReadToEnd();
             List<long> entry = inputString.Split(' ').Select(item => long.Parse(item)).ToList();
-            output = arraySolutions.CountTriplets(entry, 1).ToString();
+            output = arraySolutions.CountTriplets(new List<long> { 1, 2, 2, 4 }, 2).ToString();
         }
         break;
     case nameof(ArraysLists.FrequencyQueries):
@@ -377,6 +378,18 @@ switch (problem)
             List<int> fqResult = arraySolutions.FrequencyQueries(entry);
             output = $"[{string.Join(',', fqResult)}]";
         }
+        break;
+    case nameof(Matrix.FlipMatrixToMaximizeTopQuadrant):
+        output = matrix.FlipMatrixToMaximizeTopQuadrant(new List<List<int>>
+        {
+            new List<int>{ 112, 42, 83, 119 },
+            new List<int>{ 56, 125, 56, 49},
+            new List<int>{ 15, 78, 101, 43},
+            new List<int>{ 62, 98, 114, 108 }
+        }).ToString();
+        break;
+    case nameof(Strings.SherlockValidString):
+        output = stringSolutions.SherlockValidString("abcdefghhgfedecba").ToString();
         break;
 }
 watch.Stop();
