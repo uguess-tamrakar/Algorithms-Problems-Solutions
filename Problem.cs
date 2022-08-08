@@ -65,5 +65,10 @@ public enum PracticeProblem
     CountClosedInventory,
     ArrayManipulation,
     CountTriplets,
-    FrequencyQueries
+    FrequencyQueries,
+    SherlockValidString,
+    Candies,
+    SpecialSubstringCount,
+    MaxSetSize,
+    FindTotalPower
 }

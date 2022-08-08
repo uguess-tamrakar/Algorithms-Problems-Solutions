@@ -338,7 +338,9 @@ switch (problem)
         output = $"[{string.Join(", ", gradingStudentsResult)}]";
         break;
     case nameof(ArraysLists.CountClosedInventory):
-        List<int> closedInventoryCount = arraySolutions.CountClosedInventory("*|*|*|", new List<int> { 1 }, new List<int> { 6 });
+        List<int> closedInventoryCount = arraySolutions.CountClosedInventory("*|**|**|*",
+        new List<int> { 1, 1, 5 },
+        new List<int> { 7, 5, 6 });
         output = $"[{string.Join(", ", closedInventoryCount)}]";
         break;
     case nameof(ArraysLists.ArrayManipulation):
@@ -377,6 +379,26 @@ switch (problem)
             List<int> fqResult = arraySolutions.FrequencyQueries(entry);
             output = $"[{string.Join(',', fqResult)}]";
         }
+        break;
+    case nameof(Strings.SherlockValidString):
+        output = stringSolutions.SherlockValidString("aabbcd");
+        break;
+    case nameof(ArraysLists.Candies):
+        {
+            using StreamReader reader = new StreamReader(Directory.GetCurrentDirectory() + "/Ranks.txt");
+            string data = reader.ReadToEnd();
+            var ranks = data.Split("\n").Select(item => int.Parse(item));
+            output = arraySolutions.Candies(8, ranks.ToList()).ToString();
+            break;
+        }
+    case nameof(Strings.SpecialSubstringCount):
+        output = stringSolutions.SpecialSubstringCount("abcbaba").ToString();
+        break;
+    case nameof(ArraysLists.MaxSetSize):
+        output = arraySolutions.MaxSetSize(new List<int> { 625, 4, 2, 5, 25 }).ToString();
+        break;
+    case nameof(ArraysLists.FindTotalPower):
+        output = arraySolutions.FindTotalPower(new List<int> { 2, 3, 2, 1 }).ToString();
         break;
 }
 watch.Stop();
