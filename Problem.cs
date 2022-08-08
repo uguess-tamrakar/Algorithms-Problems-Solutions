@@ -67,5 +67,9 @@ public enum PracticeProblem
     CountTriplets,
     FrequencyQueries,
     FlipMatrixToMaximizeTopQuadrant,
-    SherlockValidString
+    SherlockValidString,
+    Candies,
+    SpecialSubstringCount,
+    MaxSetSize,
+    FindTotalPower
 }

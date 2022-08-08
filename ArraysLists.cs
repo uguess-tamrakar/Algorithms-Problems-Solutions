@@ -1,5 +1,95 @@
 public class ArraysLists
 {
+    public int FindTotalPower(List<int> power)
+    {
+        int totalPower = 0;
+
+        List<int> pres = new List<int>();
+        pres.Add(0);
+        for (int i = 1; i < power.Count + 1; i++)
+        {
+            pres.Add(pres[i - 1] + power[i - 1]);
+        }
+
+        int[][] dp = new int[power.Count + 1][];
+        dp[0] = new int[power.Count + 1];
+        Array.Fill<int>(dp[0], int.MaxValue);
+
+        for (int i = 1; i < power.Count + 1; i++)
+        {
+            dp[i] = new int[power.Count + 1];
+            Array.Fill<int>(dp[i], int.MaxValue);
+            dp[i][i] = power[i - 1];
+        }
+
+        for (int i = 1; i < power.Count + 1; i++)
+        {
+            dp[0][i] = Math.Min(dp[0][i - 1], power[i - 1]);
+        }
+
+        for (int i = 1; i < power.Count + 1; i++)
+        {
+            for (int j = i; j < power.Count + 1; j++)
+            {
+                if (i == j)
+                {
+                    totalPower += dp[i][j] * power[i - 1];
+                }
+                else
+                {
+                    dp[i][j] = Math.Min(dp[i][j - 1], dp[i - 1][j]);
+                    totalPower += dp[i][j] * (pres[j] - pres[i - 1]);
+                }
+            }
+        }
+
+        return (totalPower % (100000000 + 7));
+    }
+
+    public int MaxSetSize(List<int> riceBags)
+    {
+        int maxSetSize = -1;
+
+        List<int> orderedRiceBags = riceBags.OrderBy(item => item).ToList();
+        int currentSetSize = 1;
+
+        for (int i = 0; i < orderedRiceBags.Count - 1; i++)
+        {
+            int current = orderedRiceBags[i];
+            int nextPerfect = current * current;
+            if (nextPerfect == orderedRiceBags[i + 1])
+            {
+                currentSetSize++;
+                maxSetSize = Math.Max(maxSetSize, currentSetSize);
+            }
+            else
+            {
+                currentSetSize = 1;
+            }
+        }
+
+        return maxSetSize;
+    }
+
+    public long Candies(int n, List<int> arr)
+    {
+        long[] minCandies = new long[arr.Count];
+
+        minCandies[0] = 1;
+        for (int i = 1; i < arr.Count; i++)
+        {
+            if (arr[i] > arr[i - 1]) minCandies[i] = minCandies[i - 1] + 1;
+            else minCandies[i] = 1;
+        }
+
+        for (int j = arr.Count - 2; j >= 0; j--)
+        {
+            if (arr[j] > arr[j + 1]) minCandies[j] = Math.Max(minCandies[j], minCandies[j + 1] + 1);
+        }
+
+        return minCandies.Sum();
+    }
+
     public List<int> FrequencyQueries(List<List<int>> queries)
     {
         List<int> result = new List<int>();
@@ -148,33 +238,111 @@ public class ArraysLists
     public List<int> CountClosedInventory(string s, List<int> startIndices, List<int> endIndices)
     {
         List<int> numItems = new List<int>(startIndices.Count);
-        for (int i = 0; i < startIndices.Count; i++)
+
+        // brute force
+        // for (int i = 0; i < startIndices.Count; i++)
+        // {
+        //     int startIndex = startIndices[i];
+        //     int endIndex = endIndices[i];
+        //     int totalInventory = 0;
+        //     int numInventory = 0;
+        //     bool compartmentOpen = false;
+        //     for (int j = startIndex - 1; j < endIndex; j++)
+        //     {
+        //         if (compartmentOpen == false && s[j] == '|')
+        //         {
+        //             compartmentOpen = true;
+        //         }
+        //         else if (compartmentOpen == true)
+        //         {
+        //             if (s[j] == '*')
+        //             {
+        //                 numInventory++;
+        //             }
+        //             else if (s[j] == '|')
+        //             {
+        //                 totalInventory += numInventory;
+        //                 numInventory = 0;
+        //             }
+        //         }
+        //     }
+        //     numItems.Add(totalInventory);
+        // }
+
+        // optimized
+        int[] stars = new int[s.Length];
+
+        for (int i = 0; i < s.Length; i++)
         {
-            int startIndex = startIndices[i];
-            int endIndex = endIndices[i];
-            int totalInventory = 0;
-            int numInventory = 0;
-            bool compartmentOpen = false;
-            for (int j = startIndex - 1; j < endIndex; j++)
+            if (s[i] == '*')
             {
-                if (compartmentOpen == false && s[j] == '|')
-                {
-                    compartmentOpen = true;
-                }
-                else if (compartmentOpen == true)
-                {
-                    if (s[j] == '*')
-                    {
-                        numInventory++;
-                    }
-                    else if (s[j] == '|')
-                    {
-                        totalInventory += numInventory;
-                        numInventory = 0;
-                    }
-                }
+                int previous = i > 0 ? stars[i - 1] : 0;
+                stars[i] = previous + 1;
             }
-            numItems.Add(numInventory);
+            else
+            {
+                stars[i] = i > 0 ? stars[i - 1] : 0;
+            }
+        }
+
+        /* -- end set starts */
+
+        int[] closestLeftPipes = new int[s.Length];
+
+        for (int i = 0; i < s.Length; i++)
+        {
+            if (s[i] == '|')
+            {
+                closestLeftPipes[i] = i;
+            }
+            else
+            {
+                closestLeftPipes[i] = i > 0 ? closestLeftPipes[i - 1] : -1;
+            }
+        }
+
+        /* end set closestLeftPipe */
+
+        int[] closestRightPipes = new int[s.Length];
+
+        for (int i = s.Length - 1; i >= 0; i--)
+        {
+            if (s[i] == '|')
+            {
+                closestRightPipes[i] = i;
+            }
+            else
+            {
+                closestRightPipes[i] = i < (s.Length - 1) ? closestRightPipes[i + 1] : -1;
+            }
+        }
+
+        /* end set closestRightPipe */
+
+        for (int i = 0; i < endIndices.Count; i++)
+        {
+            int start = startIndices[i];
+            int end = endIndices[i];
+
+            int startingPipe = closestRightPipes[start - 1];
+            int endingPipe = closestLeftPipes[end - 1];
+
+            if (closestLeftPipes[closestLeftPipes.Length - 1] == -1)
+            {
+                numItems.Add(0);
+            }
+            else if (startingPipe < 0)
+            {
+                numItems.Add(0);
+            }
+            else if (startingPipe >= endingPipe)
+            {
+                numItems.Add(0);
+            }
+            else
+            {
+                numItems.Add(stars[endingPipe] - stars[startingPipe]);
+            }
         }
 
         return numItems;

@@ -3,35 +3,110 @@ using System.Text.RegularExpressions;
 
 public class Strings
 {
-    public bool SherlockValidString(string s)
+    public long SpecialSubstringCount(string s)
     {
-        Dictionary<char, int> freqs = new Dictionary<char, int>();
-        Dictionary<int, int> occurs = new Dictionary<int, int>();
+        long count = 0;
+        // start count with 2 to compensate for first and last characters
+        HashSet<string> specialSubstrings = new HashSet<string>();
 
-        foreach(char c in s)
+        for (int i = 0; i < s.Length; i++)
         {
-            if (freqs.ContainsKey(c))
-            {
-                if (occurs.ContainsKey(freqs[c]))
-                {   
-                    occurs[freqs[c]]--;
-                    if (freqs[c] == 0) occurs.Remove(freqs[c]);
-                }
-                freqs[c]++;
-            }
-            else freqs.Add(c, 1);
+            specialSubstrings.Add($"{s[i]}{i}");
 
-            if (occurs.ContainsKey(freqs[c])) occurs[freqs[c]]++;
-            else occurs.Add(freqs[c], 1);
+            if (i > 0) FindSpecialSubstringsFromLeft(s, specialSubstrings, i);
+            if (i < s.Length) FindSpecialSubstringsFromRight(s, specialSubstrings, i);
+            if (i > 0 && i < s.Length) FindSpecialSubstringsFromCenter(s, specialSubstrings, i);
         }
 
-        if (occurs.Keys.Count > 2) return false;
-        else if (occurs.Keys.Count <= 1) return true;
+        count += (long)specialSubstrings.Distinct().Count();
+
+        return count;
+    }
+
+    private void FindSpecialSubstringsFromCenter(string s, HashSet<string> specialSubstrings, int center)
+    {
+        int left = center - 1;
+        int right = center + 1;
+        char matchChar = s[left];
+        string specialSubstring = $"{s[center]}{center}";
+        while (left >= 0 && right < s.Length)
+        {
+            if (s[left] == s[right] && s[left] == matchChar && s[right] == matchChar)
+            {
+                specialSubstring = $"{s[left]}{left}{specialSubstring}{s[right]}{right}";
+                specialSubstrings.Add(specialSubstring);
+                left--;
+                right++;
+            }
+            else break;
+        }
+    }
+
+    private void FindSpecialSubstringsFromLeft(string s, HashSet<string> specialSubstrings, int current)
+    {
+        string specialSubstring = $"{s[current]}{current}";
+        int left = current - 1;
+        while (left >= 0)
+        {
+            if (s[current] == s[left])
+            {
+                specialSubstring = $"{s[left]}{left}{specialSubstring}";
+                specialSubstrings.Add(specialSubstring);
+                left--;
+            }
+            else break;
+        }
+    }
+
+    private void FindSpecialSubstringsFromRight(string s, HashSet<string> specialSubstrings, int current)
+    {
+        string specialSubstring = $"{s[current]}{current}";
+        int right = current + 1;
+        while (right < s.Length)
+        {
+            if (s[current] == s[right])
+            {
+                specialSubstring = $"{specialSubstring}{s[right]}{right}";
+                specialSubstrings.Add(specialSubstring);
+                right++;
+            }
+            else break;
+        }
+    }
+
+    public string SherlockValidString(string s)
+    {
+        Dictionary<char, int> occurs = new Dictionary<char, int>();
+        Dictionary<int, int> freqs = new Dictionary<int, int>();
+
+        foreach (char c in s)
+        {
+            if (occurs.ContainsKey(c))
+            {
+                freqs[occurs[c]]--;
+                if (freqs[occurs[c]] == 0) freqs.Remove(occurs[c]);
+                occurs[c]++;
+            }
+            else occurs.Add(c, 1);
+
+            if (freqs.ContainsKey(occurs[c])) freqs[occurs[c]]++;
+            else freqs.Add(occurs[c], 1);
+        }
+
+        if (freqs.Count <= 1) return "YES";
+        else if (freqs.Count > 2) return "NO";
         else
         {
-            int freqDiff = occurs.Keys.ElementAt(1) - occurs.Keys.ElementAt(0);
-            if (freqDiff > 1) return false;
-            else return occurs[occurs.Keys.ElementAt(1)] < 2;
+            int maxFreq = Math.Max(freqs.ElementAt(0).Key, freqs.ElementAt(1).Key);
+            int minFreq = Math.Min(freqs.ElementAt(1).Key, freqs.ElementAt(0).Key);
+
+            if (minFreq - 1 == 0 && freqs[minFreq] <= 1) return "YES";
+            else if (maxFreq - minFreq > 1) return "NO";
+            else
+            {
+                if (freqs[maxFreq] > 1) return "NO";
+                else return "YES";
+            }
         }
     }
 
