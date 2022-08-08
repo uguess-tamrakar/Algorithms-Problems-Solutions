@@ -393,7 +393,7 @@ switch (problem)
         output = stringSolutions.SpecialSubstringCount("abcbaba").ToString();
         break;
     case nameof(ArraysLists.MaxSetSize):
-        output = arraySolutions.MaxSetSize(new List<int> { 625, 4, 2, 5, 25 }).ToString();
+        output = arraySolutions.MaxSetSize(new List<int> { 625, 4, 2, 5, 25, 3, 9 }).ToString();
         break;
     case nameof(ArraysLists.FindTotalPower):
         output = arraySolutions.FindTotalPower(new List<int> { 2, 3, 2, 1 }).ToString();

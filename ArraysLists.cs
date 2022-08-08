@@ -50,25 +50,25 @@ public class ArraysLists
     {
         int maxSetSize = -1;
 
-        List<int> orderedRiceBags = riceBags.OrderBy(item => item).ToList();
-        int currentSetSize = 1;
+        List<int> orderedRiceBags = riceBags.OrderBy(item => item).Distinct().ToList();
+        Dictionary<int, int> dp = new Dictionary<int, int>();
 
-        for (int i = 0; i < orderedRiceBags.Count - 1; i++)
+        for (int i = 0; i < orderedRiceBags.Count; i++)
         {
             int current = orderedRiceBags[i];
-            int nextPerfect = current * current;
-            if (nextPerfect == orderedRiceBags[i + 1])
+            double sqrt = Math.Sqrt(current);
+            int lastPerfect = sqrt % 1 == 0 ? (int)sqrt : -1;
+
+            int currentSetSize = 1;
+            if (lastPerfect != -1 && dp.ContainsKey(lastPerfect))
             {
-                currentSetSize++;
-                maxSetSize = Math.Max(maxSetSize, currentSetSize);
-            }
-            else
-            {
-                currentSetSize = 1;
-            }
+                currentSetSize += dp[lastPerfect];
+            } 
+            dp.Add(current, currentSetSize);
+            maxSetSize = Math.Max(maxSetSize, currentSetSize);
         }
 
-        return maxSetSize;
+        return maxSetSize > 1 ? maxSetSize : -1;
     }
 
     public long Candies(int n, List<int> arr)
