@@ -71,5 +71,6 @@ public enum PracticeProblem
     Candies,
     SpecialSubstringCount,
     MaxSetSize,
-    FindTotalPower
+    FindTotalPower,
+    LongestCommonSubsequence
 }

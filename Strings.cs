@@ -3,6 +3,24 @@ using System.Text.RegularExpressions;
 
 public class Strings
 {
+    public int LongestCommonSubsequence(string s1, string s2)
+    {
+        int[] memo = new int[s2.Length];
+        for (int i = 0; i < s1.Length; i++)
+        {
+            int previous = 0;
+            for (int j = 0; j < s2.Length; j++)
+            {
+                int temp = memo[j];
+                if (s1[i] == s2[j]) memo[j] = previous + 1;
+                else memo[j] = Math.Max(memo[j], j > 0 ? memo[j - 1] : 0);
+                previous = temp;
+            }
+        }
+
+        return memo[s2.Length - 1];
+    }
+
     public long SpecialSubstringCount(string s)
     {
         long count = 0;

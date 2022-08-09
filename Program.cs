@@ -410,6 +410,9 @@ switch (problem)
     case nameof(Strings.SherlockValidString):
         output = stringSolutions.SherlockValidString("abcdefghhgfedecba").ToString();
         break;
+    case nameof(Strings.LongestCommonSubsequence):
+        output = stringSolutions.LongestCommonSubsequence("SHINCHAN", "NOHARAAA").ToString();
+        break;
 }
 watch.Stop();
 Console.WriteLine($"Result for {problems[input - 1]} problem is: {output}");
