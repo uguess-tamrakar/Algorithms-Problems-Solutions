@@ -411,8 +411,13 @@ switch (problem)
         output = stringSolutions.SherlockValidString("abcdefghhgfedecba").ToString();
         break;
     case nameof(Strings.LongestCommonSubsequence):
-        output = stringSolutions.LongestCommonSubsequence("SHINCHAN", "NOHARAAA").ToString();
-        break;
+        {
+            using StreamReader reader = new StreamReader(Directory.GetCurrentDirectory() + "/LCSInput.txt");
+            string data = reader.ReadToEnd();
+            var lcsInput = data.Split("\n");
+            output = stringSolutions.LongestCommonSubsequence(lcsInput[0], lcsInput[1]).ToString();
+            break;
+        }
 }
 watch.Stop();
 Console.WriteLine($"Result for {problems[input - 1]} problem is: {output}");

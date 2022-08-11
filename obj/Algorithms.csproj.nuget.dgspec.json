@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\yogest\\OneDrive - kochind.com\\Documents\\Algorithms-Problems-Solutions\\Csharp\\Algorithms.csproj": {}
+    "c:\\Users\\yogest\\OneDrive - kochind.com\\Documents\\Algorithms-Problems-Solutions\\Csharp\\Algorithms.csproj": {}
   },
   "projects": {
-    "C:\\Users\\yogest\\OneDrive - kochind.com\\Documents\\Algorithms-Problems-Solutions\\Csharp\\Algorithms.csproj": {
+    "c:\\Users\\yogest\\OneDrive - kochind.com\\Documents\\Algorithms-Problems-Solutions\\Csharp\\Algorithms.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\yogest\\OneDrive - kochind.com\\Documents\\Algorithms-Problems-Solutions\\Csharp\\Algorithms.csproj",
+        "projectUniqueName": "c:\\Users\\yogest\\OneDrive - kochind.com\\Documents\\Algorithms-Problems-Solutions\\Csharp\\Algorithms.csproj",
         "projectName": "Algorithms",
-        "projectPath": "C:\\Users\\yogest\\OneDrive - kochind.com\\Documents\\Algorithms-Problems-Solutions\\Csharp\\Algorithms.csproj",
+        "projectPath": "c:\\Users\\yogest\\OneDrive - kochind.com\\Documents\\Algorithms-Problems-Solutions\\Csharp\\Algorithms.csproj",
         "packagesPath": "C:\\Users\\yogest\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\yogest\\OneDrive - kochind.com\\Documents\\Algorithms-Problems-Solutions\\Csharp\\obj\\",
+        "outputPath": "c:\\Users\\yogest\\OneDrive - kochind.com\\Documents\\Algorithms-Problems-Solutions\\Csharp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\yogest\\AppData\\Roaming\\NuGet\\NuGet.Config",
