@@ -72,5 +72,8 @@ public enum PracticeProblem
     SpecialSubstringCount,
     MaxSetSize,
     FindTotalPower,
-    LongestCommonSubsequence
+    LongestCommonSubsequence,
+    SelectionSort,
+    InsertionSort,
+    MergeSort
 }

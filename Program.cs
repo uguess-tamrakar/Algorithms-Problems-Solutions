@@ -11,6 +11,7 @@ Strings stringSolutions = new Strings();
 Integers integerSolutions = new Integers();
 ArraysLists arraySolutions = new ArraysLists();
 Matrix matrix = new Matrix();
+Sorting sorter = new Sorting();
 Miscellaneous misc = new Miscellaneous();
 
 string[] problems = Enum.GetNames(typeof(PracticeProblem));
@@ -418,6 +419,15 @@ switch (problem)
             output = stringSolutions.LongestCommonSubsequence(lcsInput[0], lcsInput[1]).ToString();
             break;
         }
+    case nameof(Sorting.SelectionSort):
+        output = $"[{string.Join(", ", sorter.SelectionSort(new int[] { 12, -7, 14, 9, -10, 0 }))}]";
+        break;
+    case nameof(Sorting.InsertionSort):
+        output = $"[{string.Join(", ", sorter.InsertionSort(new int[] { 12, -7, 14, 9, -10, 0 }))}]";
+        break;
+    case nameof(Sorting.MergeSort):
+        output = $"[{string.Join(", ", sorter.MergeSort(new int[] { 12, -7, 14, 9, -10, 0 }))}]";
+        break;
 }
 watch.Stop();
 Console.WriteLine($"Result for {problems[input - 1]} problem is: {output}");
