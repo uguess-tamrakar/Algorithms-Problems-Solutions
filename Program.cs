@@ -428,6 +428,49 @@ switch (problem)
     case nameof(Sorting.MergeSort):
         output = $"[{string.Join(", ", sorter.MergeSort(new int[] { 12, -7, 14, 9, -10, 0 }))}]";
         break;
+    case nameof(Sorting.QuickSort):
+        output = $"[{string.Join(", ", sorter.QuickSort(new int[] { 9, 7, 5, 11, 12, 2, 14, 3, 10, 4, 6 }))}]";
+        break;
+    case nameof(Graph<int>.GraphBreadthFirstSearch):
+        var vertices = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        var edges = new[] { Tuple.Create(1, 2), Tuple.Create(1,3),
+                Tuple.Create(2,4), Tuple.Create(3,5), Tuple.Create(3,6),
+                Tuple.Create(4,7), Tuple.Create(5,7), Tuple.Create(5,8),
+                Tuple.Create(5,6), Tuple.Create(8,9), Tuple.Create(9,10)};
+
+        var graph = new Graph<int>(vertices, edges);
+        output = $"[{string.Join(", ", graph.GraphBreadthFirstSearch(1))}]";
+        break;
+    case nameof(Graph<int>.GraphShortestPath):
+        var verticesI = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        var edgesI = new[] { Tuple.Create(1, 2), Tuple.Create(1,3),
+                Tuple.Create(2,4), Tuple.Create(3,5), Tuple.Create(3,6),
+                Tuple.Create(4,7), Tuple.Create(5,7), Tuple.Create(5,8),
+                Tuple.Create(5,6), Tuple.Create(8,9), Tuple.Create(9,10)};
+
+        var graphI = new Graph<int>(verticesI, edgesI);
+        output = $"[{string.Join(", ", graphI.GraphShortestPath(1, 8))}]";
+        break;
+    case nameof(Graph<int>.GraphDepthFirstSearch):
+        var verticesII = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        var edgesII = new[] { Tuple.Create(1, 2), Tuple.Create(1,3),
+                Tuple.Create(2,4), Tuple.Create(3,5), Tuple.Create(3,6),
+                Tuple.Create(4,7), Tuple.Create(5,7), Tuple.Create(5,8),
+                Tuple.Create(5,6), Tuple.Create(8,9), Tuple.Create(9,10)};
+
+        var graphII = new Graph<int>(verticesII, edgesII);
+        output = $"[{string.Join(", ", graphII.GraphDepthFirstSearch(1))}]";
+        break;
+    case nameof(Graph<int>.GraphDepthFirstSearchRecursive):
+        var verticesIII = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        var edgesIII = new[] { Tuple.Create(1, 2), Tuple.Create(1,3),
+                Tuple.Create(2,4), Tuple.Create(3,5), Tuple.Create(3,6),
+                Tuple.Create(4,7), Tuple.Create(5,7), Tuple.Create(5,8),
+                Tuple.Create(5,6), Tuple.Create(8,9), Tuple.Create(9,10)};
+
+        var graphIII = new Graph<int>(verticesIII, edgesIII);
+        output = $"[{string.Join(", ", graphIII.GraphDepthFirstSearchRecursive(1))}]";
+        break;
 }
 watch.Stop();
 Console.WriteLine($"Result for {problems[input - 1]} problem is: {output}");

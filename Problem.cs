@@ -75,5 +75,10 @@ public enum PracticeProblem
     LongestCommonSubsequence,
     SelectionSort,
     InsertionSort,
-    MergeSort
+    MergeSort,
+    QuickSort,
+    GraphBreadthFirstSearch,
+    GraphShortestPath,
+    GraphDepthFirstSearch,
+    GraphDepthFirstSearchRecursive
 }

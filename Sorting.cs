@@ -48,6 +48,40 @@ public class Sorting
         return arr;
     }
 
+    public int[] QuickSort(int[] arr)
+    {
+        QuickSortRecursive(arr, 0, arr.Length - 1);
+        return arr;
+    }
+
+    private void QuickSortRecursive(int[] arr, int startIdx, int endIdx)
+    {
+        if (startIdx < endIdx)
+        {
+            int partitionIdx = partition(arr, startIdx, endIdx);
+            QuickSortRecursive(arr, startIdx, partitionIdx - 1);
+            QuickSortRecursive(arr, partitionIdx + 1, endIdx);
+        }
+    }
+
+    private int partition(int[] arr, int startIdx, int endIdx)
+    {
+        int pivot = arr[endIdx];
+        var q = startIdx;
+        var j = startIdx + 1;
+        while (j < endIdx)
+        {
+            if (arr[j] <= pivot)
+            {
+                Swap(arr, q, j);
+                q++;
+            }
+            j++;
+        }
+        Swap(arr, q, endIdx);
+        return q;
+    }
+
     public int[] MergeSort(int[] arr)
     {
         MergeSortRecursive(arr, 0, arr.Length - 1);
