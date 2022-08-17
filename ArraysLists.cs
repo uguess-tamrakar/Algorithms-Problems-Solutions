@@ -1,5 +1,25 @@
 public class ArraysLists
 {
+    public List<int> SubArraySum(int[] arr, int s)
+    {
+        int running = arr[0];
+        int left = 0;
+
+        for (int right = 1; right <= arr.Length; right++)
+        {
+            while (running > s && left < right - 1)
+            {
+                running -= arr[left++];
+            }
+
+            if (running == s) return new List<int> { left + 1, right };
+
+            if (right < arr.Length) running += arr[right];
+        }
+
+        return new List<int> { -1 };
+    }
+
     public int FindTotalPower(List<int> power)
     {
         int totalPower = 0;
@@ -63,7 +83,7 @@ public class ArraysLists
             if (lastPerfect != -1 && dp.ContainsKey(lastPerfect))
             {
                 currentSetSize += dp[lastPerfect];
-            } 
+            }
             dp.Add(current, currentSetSize);
             maxSetSize = Math.Max(maxSetSize, currentSetSize);
         }

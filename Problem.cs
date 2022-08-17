@@ -80,5 +80,6 @@ public enum PracticeProblem
     GraphBreadthFirstSearch,
     GraphShortestPath,
     GraphDepthFirstSearch,
-    GraphDepthFirstSearchRecursive
+    GraphDepthFirstSearchRecursive,
+    SubArraySum
 }

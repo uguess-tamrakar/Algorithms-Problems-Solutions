@@ -471,6 +471,9 @@ switch (problem)
         var graphIII = new Graph<int>(verticesIII, edgesIII);
         output = $"[{string.Join(", ", graphIII.GraphDepthFirstSearchRecursive(1))}]";
         break;
+    case nameof(arraySolutions.SubArraySum):
+        output = $"[{string.Join(", ", arraySolutions.SubArraySum(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, 3))}]";
+        break;
 }
 watch.Stop();
 Console.WriteLine($"Result for {problems[input - 1]} problem is: {output}");

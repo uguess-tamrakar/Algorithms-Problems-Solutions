@@ -122,4 +122,14 @@ public class Graph<T>
         shortestPath.Reverse();
         return shortestPath;
     }
+
+    public List<T> GraphDijkstraShortestPath(T start)
+    {
+        int[] shortestPath = new int[AdjacencyList.Keys.Count];
+        Array.Fill(shortestPath, int.MaxValue);
+        int[] visited = new int[AdjacencyList.Keys.Count];
+
+        // TODO: resolve this
+        return new List<T>();
+    }
 }
