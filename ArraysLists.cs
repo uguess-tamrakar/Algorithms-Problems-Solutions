@@ -1,5 +1,24 @@
 public class ArraysLists
 {
+    public int MaxSubArraySum(int[] arr)
+    {
+        if (arr.Length == 1) return arr[0];
+        int[] memo = new int[arr.Length];
+
+        int currentSum = 0;
+        int max = int.MinValue;
+
+        for (int i = 0; i < arr.Length; i++)
+        {
+            currentSum += arr[i];
+            max = Math.Max(currentSum, max);
+
+            if (currentSum < 0) currentSum = 0;
+        }
+
+        return max;
+    }
+
     public int FindTotalPower(List<int> power)
     {
         int totalPower = 0;

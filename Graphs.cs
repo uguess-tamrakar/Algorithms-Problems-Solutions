@@ -1,4 +1,5 @@
 public class Graph<T>
+    where T: notnull
 {
     public Graph() { }
     public Graph(IEnumerable<T> vertices, IEnumerable<Tuple<T, T>> edges)

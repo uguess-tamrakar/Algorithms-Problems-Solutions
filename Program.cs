@@ -9,10 +9,12 @@ BinarySearchTree bst = new BinarySearchTree();
 DynamicProgramming dp = new DynamicProgramming();
 Strings stringSolutions = new Strings();
 Integers integerSolutions = new Integers();
+LinkedLists linkedLists = new LinkedLists();
 ArraysLists arraySolutions = new ArraysLists();
 Matrix matrix = new Matrix();
 Sorting sorter = new Sorting();
 Miscellaneous misc = new Miscellaneous();
+WeightedGraph weightedGraph = new WeightedGraph();
 
 string[] problems = Enum.GetNames(typeof(PracticeProblem));
 
@@ -471,6 +473,29 @@ switch (problem)
         var graphIII = new Graph<int>(verticesIII, edgesIII);
         output = $"[{string.Join(", ", graphIII.GraphDepthFirstSearchRecursive(1))}]";
         break;
+    case nameof(WeightedGraph.DijkstraShortestPath):
+         int[, ] graphMatrix = new int[, ] { { 0, 4, 0, 0, 0, 0, 0, 8, 0 },
+                                      { 4, 0, 8, 0, 0, 0, 0, 11, 0 },
+                                      { 0, 8, 0, 7, 0, 4, 0, 0, 2 },
+                                      { 0, 0, 7, 0, 9, 14, 0, 0, 0 },
+                                      { 0, 0, 0, 9, 0, 10, 0, 0, 0 },
+                                      { 0, 0, 4, 14, 10, 0, 2, 0, 0 },
+                                      { 0, 0, 0, 0, 0, 2, 0, 1, 6 },
+                                      { 8, 11, 0, 0, 0, 0, 1, 0, 7 },
+                                      { 0, 0, 2, 0, 0, 0, 6, 7, 0 } };
+        output = $"[{string.Join(", ", weightedGraph.DijkstraShortestPath(graphMatrix, 0))}]";
+        break;
+    case nameof(LinkedLists.LinkedListInsertAndSort):
+        ListNode linkedList = new ListNode(1, new ListNode(2, new ListNode(5)));
+        linkedLists.LinkedListInsertAndSort(linkedList, new ListNode(4));
+        linkedLists.LinkedListInsertAndSort(linkedList, new ListNode(3));
+        linkedLists.LinkedListInsertAndSort(linkedList, new ListNode(9));
+        linkedLists.LinkedListInsertAndSort(linkedList, new ListNode(7));
+        printListNode(linkedList);
+        break;
+    case nameof(ArraysLists.MaxSubArraySum):
+        output = arraySolutions.MaxSubArraySum(new int[] { -1, -2, -3, -4 }).ToString();
+        break;
 }
 watch.Stop();
 Console.WriteLine($"Result for {problems[input - 1]} problem is: {output}");
@@ -500,6 +525,22 @@ int handleEmptyInput()
 
     int response = int.Parse(strResponse);
     return response;
+}
+
+void printListNode(ListNode listNode)
+{
+    ListNode current = listNode;
+    if (current != null)
+    {
+        Console.Write(current.val);
+        current = current.next;
+        while (current != null)
+        {
+            Console.Write($"-> {current.val}");
+            current = current.next;
+        }
+        Console.WriteLine();
+    }
 }
 
 List<List<int>> LuckBalanceInput() => new List<List<int>>{
