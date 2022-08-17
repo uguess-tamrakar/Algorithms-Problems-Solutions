@@ -82,7 +82,7 @@ public class ArraysLists
             if (lastPerfect != -1 && dp.ContainsKey(lastPerfect))
             {
                 currentSetSize += dp[lastPerfect];
-            } 
+            }
             dp.Add(current, currentSetSize);
             maxSetSize = Math.Max(maxSetSize, currentSetSize);
         }
