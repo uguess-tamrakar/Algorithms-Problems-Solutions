@@ -474,7 +474,7 @@ switch (problem)
         output = $"[{string.Join(", ", graphIII.GraphDepthFirstSearchRecursive(1))}]";
         break;
     case nameof(WeightedGraph.DijkstraShortestPath):
-         int[, ] graphMatrix = new int[, ] { { 0, 4, 0, 0, 0, 0, 0, 8, 0 },
+        int[,] graphMatrix = new int[,] { { 0, 4, 0, 0, 0, 0, 0, 8, 0 },
                                       { 4, 0, 8, 0, 0, 0, 0, 11, 0 },
                                       { 0, 8, 0, 7, 0, 4, 0, 0, 2 },
                                       { 0, 0, 7, 0, 9, 14, 0, 0, 0 },
@@ -495,6 +495,9 @@ switch (problem)
         break;
     case nameof(ArraysLists.MaxSubArraySum):
         output = arraySolutions.MaxSubArraySum(new int[] { -1, -2, -3, -4 }).ToString();
+        break;
+    case nameof(ArraysLists.PeakElement):
+        output = arraySolutions.PeakElement(new int[] { 1, 2, 3 }, 3).ToString();
         break;
 }
 watch.Stop();

@@ -83,5 +83,6 @@ public enum PracticeProblem
     GraphDepthFirstSearchRecursive,
     DijkstraShortestPath,
     LinkedListInsertAndSort,
-    MaxSubArraySum
+    MaxSubArraySum,
+    PeakElement
 }
