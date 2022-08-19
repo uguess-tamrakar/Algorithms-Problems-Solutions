@@ -1,9 +1,116 @@
 public class ArraysLists
 {
+    private class TrainPlatform
+    {
+        public int Key { get; set; }
+
+        public List<(int arrival, int departure)> Schedules { get; set; } = new List<(int arrival, int departure)>();
+
+        public void AddSchedule((int arrival, int departure) schedule)
+        {
+            Schedules.Add(schedule);
+            Schedules = Schedules.OrderBy(s => s.arrival).ToList();
+        }
+
+        public int canStop(int arrival, int departure)
+        {
+            bool canStop = true;
+            foreach (var schedule in Schedules)
+            {
+                if ((arrival <= schedule.arrival && departure >= schedule.arrival) ||
+                    (arrival >= schedule.arrival && arrival < schedule.departure))
+                {
+                    canStop = false;
+                    break;
+                }
+            }
+
+            return canStop ? Key : -1;
+        }
+    }
+
+    public int MinimumTrainPlatforms(int[] arr, int[] dep, int n)
+    {
+        if (n == 1) return 1;
+
+        var platforms = new List<TrainPlatform>();
+        for (int i = 0; i < n; i++)
+        {
+            int platformKey = -1;
+            foreach (var platform in platforms)
+            {
+                platformKey = platform.canStop(arr[i], dep[i]);
+                if (platformKey != - 1)
+                {
+                    platforms.First(p => p.Key == platformKey).AddSchedule((arr[i], dep[i]));
+                    break;
+                }
+            }
+
+            if (platformKey == -1)
+            {
+                var platform = new TrainPlatform() { Key = i };
+                platform.AddSchedule((arr[i], dep[i]));
+                platforms.Add(platform);
+            }
+        }
+
+        var schedules = platforms.SelectMany(p => p.Schedules);
+        return platforms.Count;
+    }
+
+    public bool SumZeroTriplets(int[] arr, int n)
+    {
+        if (n < 3) return false;
+        Array.Sort(arr);
+
+        for (int i = 0; i < n; i++)
+        {
+            int start = i + 1;
+            int end = n - 1;
+
+            while (start < end)
+            {
+                int sum = arr[i] + arr[start] + arr[end];
+                if (sum == 0) return true;
+                else if (sum < 0) start++;
+                else if (end > 0) end--;
+            }
+        }
+
+        return false;
+    }
+
+    public int TrappingWater(int[] arr)
+    {
+        if (arr.Length < 2) return 0;
+        int waterTrapped = 0;
+
+        int[] leftMax = new int[arr.Length];
+        leftMax[0] = arr[0];
+        for (int i = 1; i < arr.Length; i++)
+        {
+            leftMax[i] = Math.Max(arr[i], leftMax[i - 1]);
+        }
+
+        int[] rightMax = new int[arr.Length];
+        rightMax[arr.Length - 1] = arr[arr.Length - 1];
+        for (int i = arr.Length - 2; i >= 0; i--)
+        {
+            rightMax[i] = Math.Max(arr[i], rightMax[i + 1]);
+        }
+
+        for (int i = 1; i < arr.Length - 1; i++)
+        {
+            waterTrapped += Math.Min(leftMax[i], rightMax[i]) - arr[i];
+        }
+
+        return waterTrapped;
+    }
+
     public int MaxSubArraySum(int[] arr)
     {
         if (arr.Length == 1) return arr[0];
-        int[] memo = new int[arr.Length];
 
         int currentSum = 0;
         int max = int.MinValue;
@@ -148,27 +255,6 @@ public class ArraysLists
     public long CountTriplets(List<long> arr, long r)
     {
         long count = 0;
-
-        // brute force
-        // for (int i = 0; i < arr.Count - 2; i++)
-        // {
-        //     long compare1 = arr[i] * r;
-
-        //     for (int j = i + 1; j < arr.Count - 1; j++)
-        //     {
-        //         if (arr[j] == compare1)
-        //         {
-        //             long compare2 = compare1 * r;
-        //             for (int k = j + 1; k < arr.Count; k++)
-        //             {
-        //                 if (arr[k] == compare2)
-        //                 {
-        //                     count++;
-        //                 }
-        //             }
-        //         }
-        //     }
-        // }
 
         // optimal solution
         Dictionary<long, long> right = new Dictionary<long, long>();
