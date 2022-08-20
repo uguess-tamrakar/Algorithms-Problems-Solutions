@@ -84,5 +84,8 @@ public enum PracticeProblem
     DijkstraShortestPath,
     LinkedListInsertAndSort,
     MaxSubArraySum,
+    TrappingWater,
+    SumZeroTriplets,
+    MinimumTrainPlatforms,
     PeakElement
 }
