@@ -1,5 +1,36 @@
 public class ArraysLists
 {
+    public int Celebrity(int[,] M, int n)
+    {
+        int i = 0, j = n - 1;
+        while (i < j)
+        {
+            if (M[j, i] == 1) // j knows i
+                j--;
+            else // i knows j
+                i++;
+        }
+
+        // i points to our celebrity candidate
+        int candidate = i;
+
+        // Now, all that is left is to check that whether
+        // the candidate is actually a celebrity i.e: he is
+        // known by everyone but he knows no one
+        for (i = 0; i < n; i++)
+        {
+            if (i != candidate)
+            {
+                if (M[i, candidate] == 0 || M[candidate, i] == 1)
+                    return -1;
+            }
+        }
+
+        // if we reach here this means that the candidate
+        // is really a celebrity
+        return candidate;
+    }
+
     private class TrainPlatform
     {
         public int Key { get; set; }
@@ -18,7 +49,7 @@ public class ArraysLists
             foreach (var schedule in Schedules)
             {
                 if ((arrival <= schedule.arrival && departure >= schedule.arrival) ||
-                    (arrival >= schedule.arrival && arrival < schedule.departure))
+                    (arrival >= schedule.arrival && arrival <= schedule.departure))
                 {
                     canStop = false;
                     break;
@@ -57,6 +88,41 @@ public class ArraysLists
 
         var schedules = platforms.SelectMany(p => p.Schedules);
         return platforms.Count;
+    }
+
+    public int findPlatform(int[] arrival, int[] departure, int n)
+    {
+        // As time range from 0 to 2359 in
+        // 24 hour clock, we declare an array
+        // for values from 0 to 2360
+        int[] platform = new int[2361];
+        int requiredPlatform = 1;
+
+        for (int i = 0; i < n; i++)
+        {
+
+            // Increment the platforms for arrival
+            ++platform[arrival[i]];
+
+            // Once train departs we decrease
+            // the platform count
+            --platform[departure[i] + 1];
+        }
+
+        // We are running loop till 2361 because
+        // maximum time value in a day can be 23:60
+        for (int i = 1; i < 2361; i++)
+        {
+
+            // Taking cumulative sum of platform
+            // give us required number of
+            // platform for every minute
+            platform[i] = platform[i] +
+                          platform[i - 1];
+            requiredPlatform = Math.Max(requiredPlatform,
+                                        platform[i]);
+        }
+        return requiredPlatform;
     }
 
     public bool SumZeroTriplets(int[] arr, int n)

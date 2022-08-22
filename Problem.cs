@@ -87,5 +87,6 @@ public enum PracticeProblem
     TrappingWater,
     SumZeroTriplets,
     MinimumTrainPlatforms,
-    PeakElement
+    PeakElement,
+    Celebrity
 }
