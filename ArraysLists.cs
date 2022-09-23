@@ -1,3 +1,4 @@
+// This file contains arrays algorithms
 public class ArraysLists
 {
     public int Celebrity(int[,] M, int n)
