@@ -1,13 +1,13 @@
 public class Sorting
 {
-    private void Swap(int[] arr, int firstIdx, int secondIdx)
+    private static void Swap(int[] arr, int firstIdx, int secondIdx)
     {
         var temp = arr[firstIdx];
         arr[firstIdx] = arr[secondIdx];
         arr[secondIdx] = temp;
     }
 
-    public int[] SelectionSort(int[] arr)
+    public static int[] SelectionSort(int[] arr)
     {
         for (int i = 0; i < arr.Length; i++)
         {
@@ -31,7 +31,7 @@ public class Sorting
         return arr;
     }
 
-    public int[] InsertionSort(int[] arr)
+    public static int[] InsertionSort(int[] arr)
     {
         for (int i = 1; i < arr.Length; i++)
         {
@@ -58,13 +58,13 @@ public class Sorting
     {
         if (startIdx < endIdx)
         {
-            int partitionIdx = partition(arr, startIdx, endIdx);
+            int partitionIdx = Partition(arr, startIdx, endIdx);
             QuickSortRecursive(arr, startIdx, partitionIdx - 1);
             QuickSortRecursive(arr, partitionIdx + 1, endIdx);
         }
     }
 
-    private int partition(int[] arr, int startIdx, int endIdx)
+    private static int Partition(int[] arr, int startIdx, int endIdx)
     {
         int pivot = arr[endIdx];
         var q = startIdx;
@@ -88,7 +88,7 @@ public class Sorting
         return arr;
     }
 
-    private void MergeSortRecursive(int[] arr, int start, int end)
+    private static void MergeSortRecursive(int[] arr, int start, int end)
     {
         if (end > start)
         {
@@ -99,7 +99,7 @@ public class Sorting
         }
     }
 
-    private void Merge(int[] arr, int start, int mid, int end)
+    private static void Merge(int[] arr, int start, int mid, int end)
     {
         int[] left = new int[mid - start + 1];
         int[] right = new int[end - mid];

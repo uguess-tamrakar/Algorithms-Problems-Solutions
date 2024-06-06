@@ -1,6 +1,6 @@
 public class Miscellaneous
 {
-    public bool IsValidParenthesis(string s)
+    public static bool IsValidParenthesis(string s)
     {
         if (s.Length % 2 != 0) return false;
         char[] openParens = { '[', '{', '(' };

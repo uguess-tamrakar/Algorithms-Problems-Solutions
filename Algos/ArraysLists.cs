@@ -1,6 +1,6 @@
 public class ArraysLists
 {
-    public int Celebrity(int[,] M, int n)
+    public static int Celebrity(int[,] M, int n)
     {
         int i = 0, j = n - 1;
         while (i < j)
@@ -60,7 +60,7 @@ public class ArraysLists
         }
     }
 
-    public int MinimumTrainPlatforms(int[] arr, int[] dep, int n)
+    public static int MinimumTrainPlatforms(int[] arr, int[] dep, int n)
     {
         if (n == 1) return 1;
 
@@ -90,7 +90,7 @@ public class ArraysLists
         return platforms.Count;
     }
 
-    public int findPlatform(int[] arrival, int[] departure, int n)
+    public static int findPlatform(int[] arrival, int[] departure, int n)
     {
         // As time range from 0 to 2359 in
         // 24 hour clock, we declare an array
@@ -125,7 +125,7 @@ public class ArraysLists
         return requiredPlatform;
     }
 
-    public bool SumZeroTriplets(int[] arr, int n)
+    public static bool SumZeroTriplets(int[] arr, int n)
     {
         if (n < 3) return false;
         Array.Sort(arr);
@@ -147,7 +147,7 @@ public class ArraysLists
         return false;
     }
 
-    public int TrappingWater(int[] arr)
+    public static int TrappingWater(int[] arr)
     {
         if (arr.Length < 2) return 0;
         int waterTrapped = 0;
@@ -174,7 +174,7 @@ public class ArraysLists
         return waterTrapped;
     }
 
-    public int PeakElement(int[] arr, int n)
+    public static int PeakElement(int[] arr, int n)
     {
         if (n == 0) return -1;
         if (n == 1) return 0;
@@ -192,7 +192,7 @@ public class ArraysLists
         return -1;
     }
 
-    public int MaxSubArraySum(int[] arr)
+    public static int MaxSubArraySum(int[] arr)
     {
         if (arr.Length == 1) return arr[0];
 
@@ -210,7 +210,7 @@ public class ArraysLists
         return max;
     }
 
-    public int FindTotalPower(List<int> power)
+    public static int FindTotalPower(List<int> power)
     {
         int totalPower = 0;
 
@@ -256,7 +256,7 @@ public class ArraysLists
         return (totalPower % (100000000 + 7));
     }
 
-    public int MaxSetSize(List<int> riceBags)
+    public static int MaxSetSize(List<int> riceBags)
     {
         int maxSetSize = -1;
 
@@ -281,7 +281,7 @@ public class ArraysLists
         return maxSetSize > 1 ? maxSetSize : -1;
     }
 
-    public long Candies(int n, List<int> arr)
+    public static long Candies(int n, List<int> arr)
     {
         long[] minCandies = new long[arr.Count];
 
@@ -300,7 +300,7 @@ public class ArraysLists
         return minCandies.Sum();
     }
 
-    public List<int> FrequencyQueries(List<List<int>> queries)
+    public static List<int> FrequencyQueries(List<List<int>> queries)
     {
         List<int> result = new List<int>();
         Dictionary<int, int> frequencies = new Dictionary<int, int>();
@@ -336,7 +336,7 @@ public class ArraysLists
         return result;
     }
 
-    public long CountTriplets(List<long> arr, long r)
+    public static long CountTriplets(List<long> arr, long r)
     {
         long count = 0;
 
@@ -371,7 +371,7 @@ public class ArraysLists
         return count;
     }
 
-    public long ArrayManipulation(int n, List<List<int>> queries)
+    public static long ArrayManipulation(int n, List<List<int>> queries)
     {
         long[] arr = new long[n + 2];
 
@@ -406,7 +406,7 @@ public class ArraysLists
         return max;
     }
 
-    public List<int> GradingStudents(List<int> grades)
+    public static List<int> GradingStudents(List<int> grades)
     {
         for (int i = 0; i < grades.Count; i++)
         {
@@ -424,7 +424,7 @@ public class ArraysLists
         return grades;
     }
 
-    public List<int> CountClosedInventory(string s, List<int> startIndices, List<int> endIndices)
+    public static List<int> CountClosedInventory(string s, List<int> startIndices, List<int> endIndices)
     {
         List<int> numItems = new List<int>(startIndices.Count);
 
@@ -537,7 +537,7 @@ public class ArraysLists
         return numItems;
     }
 
-    public int LuckBalance(int k, List<List<int>> contests)
+    public static int LuckBalance(int k, List<List<int>> contests)
     {
         if (contests.Count == 0) return 0;
         int luck = 0;
@@ -563,7 +563,7 @@ public class ArraysLists
         return luck;
     }
 
-    public void WhatFlavors(List<int> cost, int money)
+    public static void WhatFlavors(List<int> cost, int money)
     {
         Dictionary<int, int> refs = new Dictionary<int, int>();
         for (int i = 0; i < cost.Count; i++)
@@ -584,7 +584,7 @@ public class ArraysLists
         }
     }
 
-    public int MinimumAbsoluteDifference(List<int> arr)
+    public static int MinimumAbsoluteDifference(List<int> arr)
     {
         int min = int.MaxValue;
         arr.Sort();
@@ -595,7 +595,7 @@ public class ArraysLists
         return min;
     }
 
-    public int MaxNumberOfToys(List<int> prices, int k)
+    public static int MaxNumberOfToys(List<int> prices, int k)
     {
         int result = 0;
 
@@ -609,7 +609,7 @@ public class ArraysLists
         return result;
     }
 
-    public void MinimumBribes(List<int> q)
+    public static void MinimumBribes(List<int> q)
     {
         // 2 1 5 3 4
         bool valid = true;
@@ -631,7 +631,7 @@ public class ArraysLists
         Console.WriteLine(valid ? bribes : "Too chaotic");
     }
 
-    public int MaxNonAdjacentSubsetSum(int[] arr)
+    public static int MaxNonAdjacentSubsetSum(int[] arr)
     {
         if (arr.Length == 0) return 0;
         arr[0] = Math.Max(0, arr[0]);
@@ -678,7 +678,7 @@ public class ArraysLists
         _a[swapIndex2] = temp;
     }
 
-    public int MinimumSwapsToOrder(int[] arr)
+    public static int MinimumSwapsToOrder(int[] arr)
     {
         int swaps = 0;
         Dictionary<int, int> dict = new Dictionary<int, int>();
@@ -703,7 +703,7 @@ public class ArraysLists
         return swaps;
     }
 
-    public int MaxStockProfit(int[] prices)
+    public static int MaxStockProfit(int[] prices)
     {
         int maxProfit = 0;
         for (int i = 1; i < prices.Length; i++)
@@ -716,7 +716,7 @@ public class ArraysLists
         return maxProfit;
     }
 
-    public IList<string> FizzBuzz(int n)
+    public static IList<string> FizzBuzz(int n)
     {
         IList<string> result = new List<string>();
         int i = 1;
@@ -747,7 +747,7 @@ public class ArraysLists
         return result;
     }
 
-    public int[] ShuffleArray(int[] x)
+    public static int[] ShuffleArray(int[] x)
     {
         int[] nums = (int[])x.Clone();
         Random rand = new Random();
@@ -762,7 +762,7 @@ public class ArraysLists
         return nums;
     }
 
-    public int[] MergeAndSortArrays(int[] nums1, int m, int[] nums2, int n)
+    public static int[] MergeAndSortArrays(int[] nums1, int m, int[] nums2, int n)
     {
         int mLastIndex = m - 1;
         int nLastIndex = n - 1;
@@ -782,7 +782,7 @@ public class ArraysLists
         return nums1;
     }
 
-    public int MoveUniquesToFront(int[] nums)
+    public static int MoveUniquesToFront(int[] nums)
     {
         if (nums == null || nums.Length == 0) return 0;
 
@@ -799,7 +799,7 @@ public class ArraysLists
         return n + 1;
     }
 
-    public double FindMedianSortedArrays(int[] nums1, int[] nums2)
+    public static double FindMedianSortedArrays(int[] nums1, int[] nums2)
     {
         List<int> sorted = new List<int>(nums1);
         sorted.AddRange(nums2);

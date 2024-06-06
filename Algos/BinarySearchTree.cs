@@ -1,6 +1,6 @@
 public class BinarySearchTree
 {
-    public int LowestCommonAncestor(TreeNode root, int v1, int v2)
+    public static int LowestCommonAncestor(TreeNode root, int v1, int v2)
     {
         if (root is null) return -1;
 
@@ -16,19 +16,19 @@ public class BinarySearchTree
         return root.Value;
     }
 
-    public bool IsValidBST(TreeNode root)
+    public static bool IsValidBST(TreeNode root)
     {
         return isValidRecursive(root, null, null);
     }
 
-    private bool isValidRecursive(TreeNode? current, int? low, int? high)
+    private static bool isValidRecursive(TreeNode? current, int? low, int? high)
     {
         if (current == null) return true;
         if ((low != null && current.Value <= low) || high != null && current.Value >= high) return false;
         return isValidRecursive(current.Left, low, current.Value) && isValidRecursive(current.Right, current.Value, high);
     }
 
-    public int NumberOfUniqueBinarySearchTrees(int n)
+    public static int NumberOfUniqueBinarySearchTrees(int n)
     {
         List<int> dp = new List<int>();
         dp.Add(1);
@@ -45,7 +45,7 @@ public class BinarySearchTree
         return dp[n];
     }
 
-    private int GetNumBSTRecursive(int n, List<int> dp)
+    private static int GetNumBSTRecursive(int n, List<int> dp)
     {
         if (dp.Count > n) return dp[n];
         int numTrees = 0;
@@ -57,14 +57,14 @@ public class BinarySearchTree
         return numTrees;
     }
 
-    public int BinaryTreeMaximumDepth(TreeNode root)
+    public static int BinaryTreeMaximumDepth(TreeNode root)
     {
         int maxDepth = int.MinValue;
         BinaryTreeMaxDepthRecursive(root, 0, ref maxDepth);
         return maxDepth;
     }
 
-    private void BinaryTreeMaxDepthRecursive(TreeNode? current, int currentDepth, ref int maxDepth)
+    private static void BinaryTreeMaxDepthRecursive(TreeNode? current, int currentDepth, ref int maxDepth)
     {
         if (current == null) return;
         else
@@ -76,7 +76,7 @@ public class BinarySearchTree
         }
     }
 
-    public int BinaryTreeMinimumDepthI(TreeNode root)
+    public static int BinaryTreeMinimumDepthI(TreeNode root)
     {
         if (root == null) return 0;
 
@@ -101,7 +101,7 @@ public class BinarySearchTree
         return result;
     }
 
-    public int BinaryTreeMinimumDepthII(TreeNode root)
+    public static int BinaryTreeMinimumDepthII(TreeNode root)
     {
         if (root == null) return 0;
         int minDepth = int.MaxValue;
@@ -109,7 +109,7 @@ public class BinarySearchTree
         return minDepth;
     }
 
-    private void BinaryTreeMinDepthRecursive(TreeNode? current, int currentDepth, ref int minDepth)
+    private static void BinaryTreeMinDepthRecursive(TreeNode? current, int currentDepth, ref int minDepth)
     {
         currentDepth++;
         if (current == null) return;
@@ -119,7 +119,7 @@ public class BinarySearchTree
         BinaryTreeMinDepthRecursive(current.Right, currentDepth, ref minDepth);
     }
 
-    public IList<IList<int>> BottomUpLevelOrderTraversal(TreeNode root)
+    public static IList<IList<int>> BottomUpLevelOrderTraversal(TreeNode root)
     {
         if (root == null) return new List<IList<int>> { };
         IList<IList<int>> results = new List<IList<int>>();
@@ -127,7 +127,7 @@ public class BinarySearchTree
         return results.Reverse().ToList();
     }
 
-    private void TraverseLevelOrder(IList<IList<int>> results, TreeNode? current, int level)
+    private static void TraverseLevelOrder(IList<IList<int>> results, TreeNode? current, int level)
     {
         if (current == null) return;
         if (level >= results.Count) results.Add(new List<int>());
@@ -136,7 +136,7 @@ public class BinarySearchTree
         TraverseLevelOrder(results, current.Right, level + 1);
     }
 
-    public IList<IList<int>> LevelOrderTraversal(TreeNode root)
+    public static IList<IList<int>> LevelOrderTraversal(TreeNode root)
     {
         if (root == null) return new List<IList<int>> { };
 
@@ -164,28 +164,28 @@ public class BinarySearchTree
         return results;
     }
 
-    public List<int> InOrderTraversal(TreeNode root)
+    public static List<int> InOrderTraversal(TreeNode root)
     {
         List<int> result = new();
         TraverseInOrder(result, root);
         return result;
     }
 
-    public List<int> PreOrderTraversal(TreeNode root)
+    public static List<int> PreOrderTraversal(TreeNode root)
     {
         List<int> result = new();
         TraversePreOrder(result, root);
         return result;
     }
 
-    public List<int> PostOrderTraversal(TreeNode root)
+    public static List<int> PostOrderTraversal(TreeNode root)
     {
         List<int> result = new();
         TraversePostOrder(result, root);
         return result;
     }
 
-    public List<int> BreadthFirstTraversalI(TreeNode root)
+    public static List<int> BreadthFirstTraversalI(TreeNode root)
     {
         List<int> result = new();
         Queue<TreeNode> queue = new();
@@ -202,7 +202,7 @@ public class BinarySearchTree
         return result;
     }
 
-    public List<int> BottomUpBreadthFirstTraversal(TreeNode root)
+    public static List<int> BottomUpBreadthFirstTraversal(TreeNode root)
     {
         List<int> result = new List<int>();
         Stack<TreeNode> stack = new Stack<TreeNode>();
@@ -225,7 +225,7 @@ public class BinarySearchTree
         return result;
     }
 
-    private void TraverseInOrder(List<int> result, TreeNode? current)
+    private static void TraverseInOrder(List<int> result, TreeNode? current)
     {
         if (current == null) return;
         TraverseInOrder(result, current.Left);
@@ -233,7 +233,7 @@ public class BinarySearchTree
         TraverseInOrder(result, current.Right);
     }
 
-    private void TraversePreOrder(List<int> result, TreeNode? current)
+    private static void TraversePreOrder(List<int> result, TreeNode? current)
     {
         if (current == null) return;
         result.Add(current.Value);
@@ -241,7 +241,7 @@ public class BinarySearchTree
         TraversePreOrder(result, current.Right);
     }
 
-    private void TraversePostOrder(List<int> result, TreeNode? current)
+    private static void TraversePostOrder(List<int> result, TreeNode? current)
     {
         if (current == null) return;
         TraversePostOrder(result, current.Left);

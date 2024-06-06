@@ -1,6 +1,6 @@
 public class Matrix
 {
-    public int FlipMatrixToMaximizeTopQuadrant(List<List<int>> matrix)
+    public static int FlipMatrixToMaximizeTopQuadrant(List<List<int>> matrix)
     {
         int total = 0;
         int n = matrix.Count / 2;

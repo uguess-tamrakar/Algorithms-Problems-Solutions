@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 public class Strings
 {
-    public int LongestCommonSubsequence(string s1, string s2)
+    public static int LongestCommonSubsequence(string s1, string s2)
     {
         int[] memo = new int[s2.Length];
         for (int i = 0; i < s1.Length; i++)
@@ -20,7 +20,7 @@ public class Strings
         return memo[s2.Length - 1];
     }
 
-    public long SpecialSubstringCount(string s)
+    public static long SpecialSubstringCount(string s)
     {
         long count = 0;
         // start count with 2 to compensate for first and last characters
@@ -40,7 +40,7 @@ public class Strings
         return count;
     }
 
-    private void FindSpecialSubstringsFromCenter(string s, HashSet<string> specialSubstrings, int center)
+    private static void FindSpecialSubstringsFromCenter(string s, HashSet<string> specialSubstrings, int center)
     {
         int left = center - 1;
         int right = center + 1;
@@ -59,7 +59,7 @@ public class Strings
         }
     }
 
-    private void FindSpecialSubstringsFromLeft(string s, HashSet<string> specialSubstrings, int current)
+    private static void FindSpecialSubstringsFromLeft(string s, HashSet<string> specialSubstrings, int current)
     {
         string specialSubstring = $"{s[current]}{current}";
         int left = current - 1;
@@ -75,7 +75,7 @@ public class Strings
         }
     }
 
-    private void FindSpecialSubstringsFromRight(string s, HashSet<string> specialSubstrings, int current)
+    private static void FindSpecialSubstringsFromRight(string s, HashSet<string> specialSubstrings, int current)
     {
         string specialSubstring = $"{s[current]}{current}";
         int right = current + 1;
@@ -91,7 +91,7 @@ public class Strings
         }
     }
 
-    public string SherlockValidString(string s)
+    public static string SherlockValidString(string s)
     {
         Dictionary<char, int> occurs = new Dictionary<char, int>();
         Dictionary<int, int> freqs = new Dictionary<int, int>();
@@ -127,7 +127,7 @@ public class Strings
         }
     }
 
-    public List<int> MatchingStrings(List<string> strings, List<string> queries)
+    public static List<int> MatchingStrings(List<string> strings, List<string> queries)
     {
         Dictionary<string, int> stringWeights = new Dictionary<string, int>();
         foreach (var s in strings)
@@ -146,7 +146,7 @@ public class Strings
         return counts;
     }
 
-    public string TimeConversion(string s)
+    public static string TimeConversion(string s)
     {
         string[] timeElements = s.Split(':');
         string AMPM = timeElements[timeElements.Length - 1].Substring(2);
@@ -170,7 +170,7 @@ public class Strings
         return string.Join(':', timeElements).Remove(8);
     }
 
-    public void CheckMagazine(List<string> magazine, List<string> note)
+    public static void CheckMagazine(List<string> magazine, List<string> note)
     {
         var dict = new Dictionary<string, int>();
         foreach (var word in magazine)
@@ -195,7 +195,7 @@ public class Strings
         Console.WriteLine(valid ? "Yes" : "No");
     }
 
-    public int MakeCharactersAlternate(string s)
+    public static int MakeCharactersAlternate(string s)
     {
         if (string.IsNullOrEmpty(s)) return 0;
         int deletions = 0;
@@ -214,7 +214,7 @@ public class Strings
         return deletions;
     }
 
-    public int SherlockAndAnagrams(string s)
+    public static int SherlockAndAnagrams(string s)
     {
         var refs = new Dictionary<string, int>();
         var total = 0;
@@ -237,7 +237,7 @@ public class Strings
         return total;
     }
 
-    public string ReverseWords(string s)
+    public static string ReverseWords(string s)
     {
         string[] words = s.Split(' ');
         List<string> reversed = new();
@@ -255,7 +255,7 @@ public class Strings
         return string.Join(' ', reversed);
     }
 
-    public bool AreBracketsBalanced(string s)
+    public static bool AreBracketsBalanced(string s)
     {
         if (s.Length % 2 != 0) return false;
         char[] openBracs = { '[', '{', '(' };
@@ -281,7 +281,7 @@ public class Strings
         return stack.Count == 0;
     }
 
-    public int MakeAnagram(string a, string b)
+    public static int MakeAnagram(string a, string b)
     {
         List<char> chars = new List<char>(a.ToCharArray());
         int notMatched = 0;
@@ -297,7 +297,7 @@ public class Strings
         return notMatched + chars.Count;
     }
 
-    public string CommonStrings(string s1, string s2)
+    public static string CommonStrings(string s1, string s2)
     {
         Dictionary<char, int> dict = new Dictionary<char, int>();
         for (int i = 0; i < s1.Length; i++)
@@ -316,7 +316,7 @@ public class Strings
         return common.ToString();
     }
 
-    public bool IsPalindromeString(string s)
+    public static bool IsPalindromeString(string s)
     {
         string sanitized = Regex.Replace(s, "[^a-zA-Z0-9]", string.Empty);
         int mid = sanitized.Length / 2;
@@ -332,7 +332,7 @@ public class Strings
         return true;
     }
 
-    public char[] ReverseString(char[] s)
+    public static char[] ReverseString(char[] s)
     {
         if (s.Length < 2) return s;
         int mid = s.Length / 2;
@@ -350,7 +350,7 @@ public class Strings
         return s;
     }
 
-    private void SwapArrayItems(int[] nums, int left, int right)
+    private static void SwapArrayItems(int[] nums, int left, int right)
     {
         int leftItem = nums[left];
         int rightItem = nums[right];
@@ -358,7 +358,7 @@ public class Strings
         nums[left] = rightItem;
     }
 
-    public int LongestSubstringWithNonRepeatingChars(string s)
+    public static int LongestSubstringWithNonRepeatingChars(string s)
     {
         if (s == null || s.Length == 0) return 0;
         if (s.Length == 1) return 1;
@@ -385,7 +385,7 @@ public class Strings
         return longest;
     }
 
-    private void FindLongestRecursive(string s, ref int max, int start)
+    private static void FindLongestRecursive(string s, ref int max, int start)
     {
         int longest = 1; // single letter is longest by default
         string unique = s[start].ToString();

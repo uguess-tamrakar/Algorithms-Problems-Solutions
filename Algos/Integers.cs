@@ -1,6 +1,6 @@
 public class Integers
 {
-    public int ReverseIntegerI(int x)
+    public static int ReverseIntegerI(int x)
     {
         if (!Int32.TryParse(x.ToString(), out int result)) return 0;
         string integer = x < 0 ? (x * -1).ToString() : x.ToString();
@@ -22,7 +22,7 @@ public class Integers
         return Int32.TryParse(reverse, out int ret) ? ret : 0;
     }
 
-    public int ReverseIntegerII(int x)
+    public static int ReverseIntegerII(int x)
     {
         if (x < 10 && x > -10) return x;
         int reversed = 0;

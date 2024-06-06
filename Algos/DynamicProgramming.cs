@@ -2,7 +2,7 @@ using System.Text;
 
 public class DynamicProgramming
 {
-    public string Abbreviation(string a, string b)
+    public static string Abbreviation(string a, string b)
     {
         string modified = new String(a);
         for (int i = 0; i < a.Length; i++)
@@ -16,7 +16,7 @@ public class DynamicProgramming
         return modified.Replace("0", "").Equals(b, StringComparison.OrdinalIgnoreCase) ? "YES" : "NO";
     }
 
-    public int NumberOfWaysClimbStairsII(int n)
+    public static int NumberOfWaysClimbStairsII(int n)
     {
         if (n == 0) return 0;
         List<int> dp = new List<int>();
@@ -32,7 +32,7 @@ public class DynamicProgramming
         return dp[n];
     }
 
-    public int MaxProfitInStock(int[] prices)
+    public static int MaxProfitInStock(int[] prices)
     {
         int maxProfit = 0;
         int minPrice = prices[0];
@@ -47,7 +47,7 @@ public class DynamicProgramming
         return maxProfit;
     }
 
-    public int NumberOfWaysClimbStairsI(int n)
+    public static int NumberOfWaysClimbStairsI(int n)
     {
         if (n < 3) return n;
         int[] dp = new int[n + 1];
@@ -71,7 +71,7 @@ public class DynamicProgramming
         return results;
     }
 
-    private void dfs(IList<IList<string>> results, List<string> current, int start, string s)
+    private static void dfs(IList<IList<string>> results, List<string> current, int start, string s)
     {
         if (start >= s.Length) results.Add(new List<string>(current));
         for (int end = start; end < s.Length; end++)
@@ -85,7 +85,7 @@ public class DynamicProgramming
         }
     }
 
-    private bool IsPalindrome(string s)
+    private static bool IsPalindrome(string s)
     {
         if (s.Length == 1) return true;
         int mid = (s.Length - 1) / 2;
